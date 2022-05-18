@@ -1,0 +1,739 @@
+<?xml version="1.0"?>
+<!--
+  U.S.S. Olympia.
+
+  Copyright (C) 2012  Anders Gidenstam  (anders(at)gidenstam.org)
+  This file is licensed under the GPL license version 2 or later.
+
+  deck texture modified from https://unblast.com/5-free-seamless-wood-textures-jpg/ by Vladimir Radetzki (https://rvdesign.myportfolio.com/contact)
+
+-->
+<PropertyList>
+
+ <path>USS_Olympia.ac</path>
+ <offsets>
+  <!-- x/y/z == back/right/up -->
+  <x-m> 0.00 </x-m>
+  <y-m> 0.00 </y-m>
+  <z-m> 2.00 </z-m>
+  <pitch-deg>0</pitch-deg>
+ </offsets>
+
+<effect>
+  <name>Effects/reflection</name>
+  <inherits-from>Aircraft/Generic/Effects/Fuselagereflect</inherits-from>
+    <object-name>anchors_anchors</object-name>
+    <object-name>anchors_buff</object-name>
+    <object-name>anchors_hawse_holes</object-name>
+    <object-name>anchors_ventilator_outside</object-name>
+    <object-name>anchors_winch_green</object-name>
+    <object-name>binnacle_controls</object-name>
+    <object-name>boats_boats</object-name>
+    <object-name>bollard_fordeck_ventilator_outside</object-name>
+    <object-name>bollards_barrels</object-name>
+    <object-name>casemate_casemate</object-name>
+    <object-name>casemate_deck</object-name>
+    <object-name>casemate_ventilator_outside</object-name>
+    <object-name>compass_face_compass_face</object-name>
+    <object-name>conning_tower_ventilator_outside</object-name>
+    <object-name>davits_casemate</object-name>
+    <object-name>deck_aft_deck</object-name>
+    <object-name>deck_aft_ventilator_outside</object-name>
+    <object-name>deck_fore_deck</object-name>
+    <object-name>deck_fore_ventilator_outside</object-name>
+    <object-name>desk_controls</object-name>
+    <object-name>fence_barrels</object-name>
+    <object-name>fence_ventilator_outside</object-name>
+    <object-name>flag_flag</object-name>
+    <object-name>flag_staves_ventilator_outside</object-name>
+    <object-name>gun_10_barrels</object-name>
+    <object-name>gun_11_barrels</object-name>
+    <object-name>gun_12_barrels</object-name>
+    <object-name>gun_13_barrels</object-name>
+    <object-name>gun_14_barrels</object-name>
+    <object-name>gun_15_barrels</object-name>
+    <object-name>gun_16_barrels</object-name>
+    <object-name>gun_17_barrels</object-name>
+    <object-name>gun_18_barrels</object-name>
+    <object-name>gun_19_barrels</object-name>
+    <object-name>gun_1_barrels</object-name>
+    <object-name>gun_20_barrels</object-name>
+    <object-name>gun_21_barrels</object-name>
+    <object-name>gun_22_barrels</object-name>
+    <object-name>gun_23_barrels</object-name>
+    <object-name>gun_24_barrels</object-name>
+    <object-name>gun_25_barrels</object-name>
+    <object-name>gun_26_barrels</object-name>
+    <object-name>gun_27_barrels</object-name>
+    <object-name>gun_28_barrels</object-name>
+    <object-name>gun_2_barrels</object-name>
+    <object-name>gun_3_barrels</object-name>
+    <object-name>gun_4_barrels</object-name>
+    <object-name>gun_5_barrels</object-name>
+    <object-name>gun_6_barrels</object-name>
+    <object-name>gun_7_barrels</object-name>
+    <object-name>gun_8_barrels</object-name>
+    <object-name>gun_9_barrels</object-name>
+    <object-name>hull_breakwater_inside</object-name>
+    <object-name>hull_breakwater_outside</object-name>
+    <object-name>hull_deck</object-name>
+    <object-name>hull_hull</object-name>
+    <object-name>hull_props</object-name>
+    <object-name>masts_masts</object-name>
+    <object-name>pilot_house_pilot_house</object-name>
+    <object-name>prop_port_props</object-name>
+    <object-name>prop_stbd_props</object-name>
+    <object-name>rigging_anchors</object-name>
+    <object-name>rudder_hull</object-name>
+    <object-name>skylight_round_2_skylight_round</object-name>
+    <object-name>skylights_square_skylights</object-name>
+    <object-name>skylights_square_turrets</object-name>
+    <object-name>sponsons_sponsons</object-name>
+    <object-name>stacks_barrels</object-name>
+    <object-name>stacks_stack</object-name>
+    <object-name>telegraphs_controls</object-name>
+    <object-name>telegraphs_throttle_dial_port</object-name>
+    <object-name>telegraphs_throttle_dial_stbd</object-name>
+    <object-name>throttle_indicator_port_throttle_indicator</object-name>
+    <object-name>throttle_indicator_stbd_throttle_indicator</object-name>
+    <object-name>torpedo_ventilator_outside</object-name>
+    <object-name>turret_aft_base_turrets</object-name>
+    <object-name>turret_aft_turrets</object-name>
+    <object-name>turret_fore_base_turrets</object-name>
+    <object-name>turret_fore_turrets</object-name>
+    <object-name>ventilators_ventilator_inside</object-name>
+    <object-name>ventilators_ventilator_outside</object-name>
+    <object-name>vents_grate</object-name>
+    <object-name>vents_turrets</object-name>
+    <object-name>vents_ventilator_outside</object-name>
+    <object-name>wheel_stern_support_wheel_stern_stantions</object-name>
+    <object-name>wheel_stern_wheel_stern</object-name>
+    <object-name>wheel_support_controls</object-name>
+    <object-name>wheel_wheel</object-name>
+    <object-name>winch_barrels</object-name>
+    <object-name>winch_winch_green</object-name>
+  </effect>
+
+ <!-- Don't bother casting shadows for small or transparent objects -->
+  <animation>
+    <type>noshadow</type>
+    <object-name>fence_ventilator_outside</object-name>
+    <object-name>hull_deck</object-name>
+    <object-name>anchors_hawse_holes</object-name>
+    <object-name>flag_staves_ventilator_outside</object-name>
+    <object-name>anchors_anchors</object-name>
+    <object-name>anchors_stanchions</object-name>
+    <object-name>rigging_anchors</object-name>
+    <object-name>fence_barrels</object-name>
+    <object-name>fence_ventilator_outside</object-name>
+  </animation>
+
+<!-- hide the built-in flag_flag -->
+<animation>
+<type>select</type>
+    <object-name>flag_flag</object-name>
+</animation>
+
+
+
+ <!-- Rembrandt transparency markup. -->
+ <!-- effect>
+  <inherits-from>Effects/model-transparent</inherits-from>
+  <object-name>car_windows</object-name>
+  <object-name>car_windows.2</object-name>
+ </effect -->
+
+
+<model>
+  <name>Pennant</name>
+  <path>Aircraft/USS_Olympia/Models/commodore_pennant.xml</path>
+</model>
+
+<model>
+  <name>Flags</name>
+  <path>Aircraft/USS_Olympia/Models/flags.xml</path>
+  <offsets>
+    <x-m> 104.706383 </x-m>
+    <y-m> -0.061341 </y-m>
+    <z-m>  9.907047 </z-m>
+    <pitch-deg>22</pitch-deg> 
+  </offsets>
+</model>
+
+
+
+
+<model>
+  <name>Lights</name>
+  <path>Aircraft/USS_Olympia/Models/lights.xml</path>
+</model>
+
+ <!-- Crew Models-->
+  <model>
+    <name>Sailor_Port</name>
+    <path>Aircraft/USS_Olympia/Models/Crew/sailor_port.xml</path>
+    <offsets>
+      <x-m>  31.58 </x-m>
+      <y-m> -0.308287 </y-m>
+      <z-m>  10.101 </z-m>    
+    </offsets>
+  </model>
+  <model>
+    <name>Sailor_Stbd</name>
+    <path>Aircraft/USS_Olympia/Models/Crew/sailor_stbd.xml</path>
+    <offsets>
+      <x-m>  31.58 </x-m>
+      <y-m>  0.35287 </y-m>
+      <z-m>  10.101 </z-m>    
+    </offsets>
+  </model>
+
+
+<animation>
+    <name>ship</name>
+    <object-name>Pennant</object-name>
+    <object-name>Flags</object-name>
+    <object-name>Lights</object-name>
+    <object-name>Sailor_Stbd</object-name>
+    <object-name>Sailor_Port</object-name>
+
+    <object-name>Foreward boiler smoke</object-name>
+    <object-name>Aft boiler smoke</object-name>
+
+    <object-name>anchors_anchors</object-name>
+    <object-name>anchors_buff</object-name>
+    <object-name>anchors_hawse_holes</object-name>
+    <object-name>anchors_ventilator_outside</object-name>
+    <object-name>anchors_winch_green</object-name>
+    <object-name>binnacle_controls</object-name>
+    <object-name>boats_boats</object-name>
+    <object-name>bollard_fordeck_ventilator_outside</object-name>
+    <object-name>bollards_barrels</object-name>
+    <object-name>casemate_casemate</object-name>
+    <object-name>casemate_deck</object-name>
+    <object-name>casemate_ventilator_outside</object-name>
+    <object-name>compass_face_compass_face</object-name>
+    <object-name>conning_tower_ventilator_outside</object-name>
+    <object-name>davits_casemate</object-name>
+    <object-name>deck_aft_deck</object-name>
+    <object-name>deck_aft_ventilator_outside</object-name>
+    <object-name>deck_fore_deck</object-name>
+    <object-name>deck_fore_ventilator_outside</object-name>
+    <object-name>desk_controls</object-name>
+    <object-name>fence_barrels</object-name>
+    <object-name>fence_ventilator_outside</object-name>
+    <object-name>flag_flag</object-name>
+    <object-name>flag_staves_ventilator_outside</object-name>
+    <object-name>gun_10_barrels</object-name>
+    <object-name>gun_11_barrels</object-name>
+    <object-name>gun_12_barrels</object-name>
+    <object-name>gun_13_barrels</object-name>
+    <object-name>gun_14_barrels</object-name>
+    <object-name>gun_15_barrels</object-name>
+    <object-name>gun_16_barrels</object-name>
+    <object-name>gun_17_barrels</object-name>
+    <object-name>gun_18_barrels</object-name>
+    <object-name>gun_19_barrels</object-name>
+    <object-name>gun_1_barrels</object-name>
+    <object-name>gun_20_barrels</object-name>
+    <object-name>gun_21_barrels</object-name>
+    <object-name>gun_22_barrels</object-name>
+    <object-name>gun_23_barrels</object-name>
+    <object-name>gun_24_barrels</object-name>
+    <object-name>gun_25_barrels</object-name>
+    <object-name>gun_26_barrels</object-name>
+    <object-name>gun_27_barrels</object-name>
+    <object-name>gun_28_barrels</object-name>
+    <object-name>gun_2_barrels</object-name>
+    <object-name>gun_3_barrels</object-name>
+    <object-name>gun_4_barrels</object-name>
+    <object-name>gun_5_barrels</object-name>
+    <object-name>gun_6_barrels</object-name>
+    <object-name>gun_7_barrels</object-name>
+    <object-name>gun_8_barrels</object-name>
+    <object-name>gun_9_barrels</object-name>
+    <object-name>hull_breakwater_inside</object-name>
+    <object-name>hull_breakwater_outside</object-name>
+    <object-name>hull_deck</object-name>
+    <object-name>hull_hull</object-name>
+    <object-name>hull_props</object-name>
+    <object-name>masts_masts</object-name>
+    <object-name>pilot_house_pilot_house</object-name>
+    <object-name>prop_port_props</object-name>
+    <object-name>prop_stbd_props</object-name>
+    <object-name>rigging_anchors</object-name>
+    <object-name>rudder_hull</object-name>
+    <object-name>skylight_round_2_skylight_round</object-name>
+    <object-name>skylights_square_skylights</object-name>
+    <object-name>skylights_square_turrets</object-name>
+    <object-name>sponsons_sponsons</object-name>
+    <object-name>stacks_barrels</object-name>
+    <object-name>stacks_stack</object-name>
+    <object-name>telegraphs_controls</object-name>
+    <object-name>telegraphs_throttle_dial_port</object-name>
+    <object-name>telegraphs_throttle_dial_stbd</object-name>
+    <object-name>throttle_indicator_port_throttle_indicator</object-name>
+    <object-name>throttle_indicator_stbd_throttle_indicator</object-name>
+    <object-name>torpedo_ventilator_outside</object-name>
+    <object-name>turret_aft_base_turrets</object-name>
+    <object-name>turret_aft_turrets</object-name>
+    <object-name>turret_fore_base_turrets</object-name>
+    <object-name>turret_fore_turrets</object-name>
+    <object-name>ventilators_ventilator_inside</object-name>
+    <object-name>ventilators_ventilator_outside</object-name>
+    <object-name>vents_grate</object-name>
+    <object-name>vents_turrets</object-name>
+    <object-name>vents_ventilator_outside</object-name>
+    <object-name>wheel_stern_support_wheel_stern_stantions</object-name>
+    <object-name>wheel_stern_wheel_stern</object-name>
+    <object-name>wheel_support_controls</object-name>
+    <object-name>wheel_wheel</object-name>
+    <object-name>winch_barrels</object-name>
+    <object-name>winch_winch_green</object-name>
+</animation>
+
+
+
+ <!--model>
+  <name>Interior</name>
+  <path>Aircraft/USS_Olympia/Models/Interior/interior.xml</path>
+  <offsets -->
+   <!-- x/y/z == back/right/up -->
+   <!-- x-m> 0.00 </x-m>
+   <y-m> 0.00 </y-m>
+   <z-m> 0.00 </z-m>
+  </offsets>
+ </model -->
+
+
+<!-- Wheel Movement -->
+  <animation>
+    <type>rotate</type>
+    <object-name>wheel_wheel</object-name>
+    <property>surface-positions/rudder-pos-norm</property>
+    <factor> 100 </factor>
+    <center>
+      <x-m>  31.0679 </x-m>
+      <y-m> -0.008287 </y-m>
+      <z-m>  10.827984 </z-m>
+    </center>
+    <axis>
+      <x> 1 </x>
+      <y> 0 </y>
+      <z> 0 </z>
+    </axis>
+  </animation>
+
+
+ <!-- Rudder Movement -->
+  <animation>
+    <type>rotate</type>
+    <object-name>rudder_hull</object-name>
+    <property>surface-positions/rudder-pos-norm</property>
+    <factor> 20 </factor>
+    <center>
+      <x-m>  101.86776 </x-m>
+      <y-m> -0.015288 </y-m>
+      <z-m> -5.948376 </z-m>
+    </center>
+    <axis>
+      <x> 0 </x>
+      <y> 0 </y>
+      <z> 1 </z>
+    </axis>
+  </animation>
+
+ <!-- Prop Spins fdm/jsbsim/propulsion/engine/steam-mean-pressure-psi -->
+  <animation>
+    <type>spin</type>
+    <object-name>prop_stbd_props</object-name>
+    <expression>
+      <product>      
+        <property>fdm/jsbsim/propulsion/engine/engine-rpm</property>
+        <property>fdm/jsbsim/external_reactions/propeller/x</property> <!-- can be set to -1 via key binding 127-Delete to reverse engines -->
+      </product>
+    </expression>
+    <center>
+      <x-m> 100.955 </x-m>
+      <y-m>  3.085 </y-m>
+      <z-m> -4.099 </z-m>
+    </center>
+    <axis>
+      <x> -1 </x>
+      <y> 0 </y>
+      <z> 0 </z>
+    </axis>
+  </animation>
+
+  <animation>
+    <type>spin</type>
+    <object-name>prop_port_props</object-name>
+    <expression>
+      <product>      
+        <property>fdm/jsbsim/propulsion/engine/engine-rpm</property>
+        <property>fdm/jsbsim/external_reactions/propeller/x</property> <!-- can be set to -1 via key binding 127-Delete to reverse engines -->
+      </product>
+    </expression>
+    <center>
+      <x-m> 100.955 </x-m>
+      <y-m> -3.085 </y-m>
+      <z-m> -4.099 </z-m>
+    </center>
+    <axis>
+      <x> 1 </x>
+      <y> 0 </y>
+      <z> 0 </z>
+    </axis>
+  </animation>
+
+
+
+<!-- ROTATE FORE TURRET -->
+ <animation>
+  <type>rotate</type>
+  <object-name>turret_fore_turrets</object-name>
+  <object-name>gun_1_barrels</object-name>
+  <object-name>gun_2_barrels</object-name>
+  <property>sim/model/fore-turret-bearing-deg</property>
+  <factor>0.5</factor>
+  <offset-deg>0.0</offset-deg>
+  <center>
+   <x-m> 21.891416 </x-m>
+   <y-m> -0.008321 </y-m>
+   <z-m> 8.298687 </z-m>
+  </center>
+  <axis>
+   <x> 0.0 </x>
+   <y> 0.0 </y>
+   <z> 1.0 </z>
+  </axis>
+ </animation>
+<!-- ELEVATE/DEPRESS FORE TURRET GUNS -->
+ <animation>
+  <type>rotate</type>
+  <object-name>gun_1_barrels</object-name>
+  <object-name>gun_2_barrels</object-name>
+  <property>sim/model/fore-turret-guns-elevation-deg</property>
+  <factor>0.5</factor>
+  <offset-deg>0.0</offset-deg>
+  <center>
+   <x-m> 19.264654 </x-m>
+   <y-m> 1.491655 </y-m>
+   <z-m> 7.760964 </z-m>
+  </center>
+  <axis>
+   <x> 0.0 </x>
+   <y> 1.0 </y>
+   <z> 0.0 </z>
+  </axis>
+ </animation>
+
+
+<!-- ROTATE AFT TURRET -->
+ <animation>
+  <type>rotate</type>
+  <object-name>turret_aft_turrets</object-name>
+  <object-name>gun_3_barrels</object-name>
+  <object-name>gun_4_barrels</object-name>
+  <property>sim/model/aft-turret-bearing-deg</property>
+  <factor>0.5</factor>
+  <offset-deg>0.0</offset-deg>
+  <center>
+   <x-m> 84.747676 </x-m>
+   <y-m> 0.0 </y-m>
+   <z-m> 8.145874 </z-m>
+  </center>
+  <axis>
+   <x> 0.0 </x>
+   <y> 0.0 </y>
+   <z> 1.0 </z>
+  </axis>
+ </animation>
+<!-- ELEVATE/DEPRESS AFT TURRET GUNS -->
+ <animation>
+  <type>rotate</type>
+  <object-name>gun_3_barrels</object-name>
+  <object-name>gun_4_barrels</object-name>
+  <property>sim/model/aft-turret-guns-elevation-deg</property>
+  <factor>0.5</factor>
+  <offset-deg>0.0</offset-deg>
+  <center>
+   <x-m> 87.488952 </x-m>
+   <y-m> 0.0 </y-m>
+   <z-m> 7.608113 </z-m>
+  </center>
+  <axis>
+   <x> 0.0 </x>
+   <y> -1.0 </y>
+   <z> 0.0 </z>
+  </axis>
+ </animation>
+
+
+ <animation>
+  <type>rotate</type>
+  <object-name>ship</object-name>
+  <property>sim/model/aground_pitch</property>
+  <factor>1</factor>
+  <offset-deg>0.0</offset-deg>
+  <center>
+   <x-m> 0.0 </x-m>
+   <y-m> 0.0 </y-m>
+   <z-m> 0.0 </z-m>
+  </center>
+  <axis>
+   <x> 0.0 </x>
+   <y> 1.0 </y>
+   <z> 0.0 </z>
+  </axis>
+ </animation>
+ <animation>
+  <type>rotate</type>
+  <object-name>ship</object-name>
+  <property>sim/model/aground_heel</property>
+  <factor>1</factor>
+  <offset-deg>0.0</offset-deg>
+  <center>
+   <x-m> 0.0 </x-m>
+   <y-m> 0.0 </y-m>
+   <z-m> 0.0 </z-m>
+  </center>
+  <axis>
+   <x> 1.0 </x>
+   <y> 0.0 </y>
+   <z> 0.0 </z>
+  </axis>
+ </animation>
+
+
+
+ <!-- Particle effects ======================================================-->
+
+ <model>
+  <name>Foreward boiler smoke</name>
+  <path>Aircraft/USS_Olympia/Models/Effects/smoke.xml</path>
+ <condition>
+   <greater-than>
+<!--  <property>fdm/jsbsim/hydro/vbx-fps</property> -->
+    <property>fdm/jsbsim/propulsion/engine/steam-mean-pressure-psi</property>
+    <value>15.0</value>
+   </greater-than>
+  </condition>
+  <offsets>
+   <!-- x/y/z == back/right/up -->
+   <x-m> 35.900 </x-m>
+   <y-m> 0.000 </y-m>
+   <z-m> 16.800 </z-m>
+  </offsets>
+ </model>
+
+ <model>
+  <name>Aft boiler smoke</name>
+  <path>Aircraft/USS_Olympia/Models/Effects/smoke.xml</path>
+ <condition>
+   <greater-than>
+    <!-- <property>fdm/jsbsim/hydro/vbx-fps</property> -->
+    <property>fdm/jsbsim/propulsion/engine/steam-mean-pressure-psi</property>
+    <value>6.0</value>
+   </greater-than>
+  </condition>
+  <offsets>
+   <!-- x/y/z == back/right/up -->
+   <x-m> 53.50 </x-m>
+   <y-m> 0.00 </y-m>
+   <z-m> 16.800 </z-m>
+  </offsets>
+ </model>
+
+
+ <!-- Bow Wake ==============================================================-->
+<model>
+  <name>Bow Splash Port</name>
+  <overlay>
+   <particlesystem>
+  <condition>
+   <greater-than>
+    <property>fdm/jsbsim/hydro/vbx-fps</property>
+    <value>12.0</value>
+   </greater-than>
+  </condition>
+    <shooter>
+     <phi-min-deg>-45.0</phi-min-deg>
+     <phi-max-deg>-50.0</phi-max-deg>
+    </shooter>
+   </particlesystem>
+  </overlay>
+  <path>Aircraft/USS_Olympia/Models/Effects/splash.xml</path>
+  <offsets>
+   <!-- x/y/z == back/right/up -->
+   <x-m>  -0.10 </x-m>
+   <y-m>  0.00 </y-m>
+   <z-m>  0.00 </z-m>
+  </offsets>
+ </model> 
+
+<model>
+  <name>Bow Wake Port</name>
+  <overlay>
+   <particlesystem>
+  <condition>
+   <greater-than>
+    <property>fdm/jsbsim/hydro/vbx-fps</property>
+    <value>7.0</value>
+   </greater-than>
+  </condition>
+    <shooter>
+     <phi-min-deg>-45.0</phi-min-deg>
+     <phi-max-deg>-50.0</phi-max-deg>
+    </shooter>
+   </particlesystem>
+  </overlay>
+  <path>Aircraft/USS_Olympia/Models/Effects/wake.xml</path>
+  <offsets>
+   <!-- x/y/z == back/right/up -->
+   <x-m>  0.00 </x-m>
+   <y-m>  0.00 </y-m>
+   <z-m>  0.00 </z-m>
+  </offsets>
+ </model>
+
+
+ <model>
+  <name>Bow Splash Starboard</name>
+  <overlay>
+   <particlesystem>
+     <condition>
+       <greater-than>
+         <property>fdm/jsbsim/hydro/vbx-fps</property>
+         <value>12.0</value>
+       </greater-than>
+     </condition>
+    <shooter>
+     <phi-min-deg>45.0</phi-min-deg>
+     <phi-max-deg>50.0</phi-max-deg>
+    </shooter>
+   </particlesystem>
+  </overlay>
+  <path>Aircraft/USS_Olympia/Models/Effects/splash.xml</path>
+  <offsets>
+   <!-- x/y/z == back/right/up -->
+   <x-m> -0.10 </x-m>
+   <y-m> 0.00 </y-m>
+   <z-m> 0.00 </z-m>
+  </offsets>
+ </model>
+
+ <model>
+  <name>Bow Wake Starboard</name>
+  <overlay>
+   <particlesystem>
+     <condition>
+       <greater-than>
+         <property>fdm/jsbsim/hydro/vbx-fps</property>
+         <value>7.0</value>
+       </greater-than>
+     </condition>
+    <shooter>
+     <phi-min-deg>45.0</phi-min-deg>
+     <phi-max-deg>50.0</phi-max-deg>
+    </shooter>
+   </particlesystem>
+  </overlay>
+  <path>Aircraft/USS_Olympia/Models/Effects/wake.xml</path>
+  <offsets>
+   <!-- x/y/z == back/right/up -->
+   <x-m> 0.00 </x-m>
+   <y-m> 0.00 </y-m>
+   <z-m> 0.00 </z-m>
+  </offsets>
+ </model>
+
+ 
+
+ <!-- Propeller Wake ================================================================-->
+
+ <model>
+  <name>Propeller Wake Center</name>
+  <overlay>
+   <particlesystem>
+  <condition>
+   <greater-than>
+    <property>fdm/jsbsim/hydro/vbx-fps</property>
+    <value>12.0</value>
+   </greater-than>
+  </condition>
+
+    <shooter>
+     <phi-min-deg> 0.0</phi-min-deg>
+     <phi-max-deg> 100.0</phi-max-deg>
+    </shooter>
+   </particlesystem>
+  </overlay>
+  <path>Aircraft/USS_Olympia/Models/Effects/propeller_wake.xml</path>
+  <offsets>
+   <!-- x/y/z == back/right/up -->
+   <x-m> 101.534 </x-m>
+   <y-m> 0.00 </y-m>
+   <z-m> 1.20 </z-m>
+  </offsets>
+ </model>
+
+<model>
+  <name>Propeller Wake Center 2</name>
+  <overlay>
+   <particlesystem>
+  <condition>
+   <greater-than>
+    <property>fdm/jsbsim/hydro/vbx-fps</property>
+    <value>12.0</value>
+   </greater-than>
+  </condition>
+    <shooter>
+     <phi-min-deg> 0.0</phi-min-deg>
+     <phi-max-deg> -50.0</phi-max-deg>
+    </shooter>
+   </particlesystem>
+  </overlay>
+  <path>Aircraft/USS_Olympia/Models/Effects/propeller_wake.xml</path>
+  <offsets>
+   <!-- x/y/z == back/right/up -->
+   <x-m> 101.534 </x-m>
+   <y-m> 0.00 </y-m>
+   <z-m> 1.20 </z-m>
+  </offsets>
+ </model>
+
+ <!-- Water ================================================================-->
+ <model>
+  <name>Water</name>
+  <path>Aircraft/USS_Olympia/Models/water.xml</path>
+  <offsets>
+   <!-- x/y/z == back/right/up -->
+   <x-m>12.00</x-m>
+   <y-m>0.00</y-m>
+   <z-m>0.00</z-m>
+  </offsets>
+ </model>
+
+
+ <!-- Markers for debugging ================================================-->
+ <!-- model>
+  <name>Markers</name>
+  <path>Aircraft/USS_Olympia/Models/markers.xml</path>
+  <offsets>
+   <x-m>12.00</x-m>
+   <y-m>0.00</y-m>
+   <z-m>0.00</z-m>
+  </offsets>
+ </model -->
+
+
+
+ <!-- LOD for the model as a whole -->
+ <animation>
+  <type>range</type>
+  <min-m>0</min-m>
+  <max-m>30000</max-m>
+ </animation>
+
+</PropertyList>

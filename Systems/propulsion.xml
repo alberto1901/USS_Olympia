@@ -1,0 +1,394 @@
+<?xml version="1.0"?>
+<!--
+
+  U.S.S. Olympia "flight" model for JSBSim.
+
+    Copyright (C) 2012 - 2015  Anders Gidenstam  (anders(at)gidenstam.org)
+
+    This program is free software; you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation; either version 2 of the License, or
+    (at your option) any later version.
+  
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+  
+    You should have received a copy of the GNU General Public License
+    along with this program; if not, write to the Free Software
+    Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+  
+
+
+
+-->
+<system name="propulsion">
+
+ <documentation>
+
+MONITOR:
+   Known:
+     Propeller ([Peterkin:1985:DRM], drawing no. 131, page 343)
+       Diameter 9 ft, pitch 16 ft, diameter of hub 18 in.
+     Boilers
+       40 psi.        ([Miller:1974:PC], page 110)
+     Engine
+       2 cylinder vibrating lever half trunk engine.
+       Back-to-back cylinders 40 in diameter, 22 in stroke.
+       Diameter of propeller shaft 9 in.
+       ([Miller:1974:PC], page 109)
+       Power 400 hp. ([Miller:1974:PC], page 145)
+       Trunk diameter 13(?) in.
+       The cut-off could probably be changed at run-time for a
+       power - economy trade-off.
+
+
+OLYMPIA:
+SOURCE: Historic American Engineering Record (U.S.S.OLYMPIA
+HAER No. PA-428), 1996.
+
+Detailed as-built specifications of Olympia's hull, engines,
+boilers and auxiliary equipment are included in Appendix A.
+Olympia's two modern twin-screw vertical triple-expansion engines
+were rated at 13,500 hp. at 160 lbs. pressure and 128 rpm. Their
+cylinder diameters are 42, 59 and 92 inches with a 42 inch stroke.
+The main valves are of the piston type, worked by the Stevenson
+link motion. The design specified bronze bed plates and journals
+lined with Parson's white metal installed under hydraulic pressure
+of 15 tons per square inch.
+
+ENGINE DATA
+    Number of cylinders, each engine 3
+    Diameter of cylinders, high pressure, inches 42
+    Diameter of cylinders, intermediate pressure, inches 59
+    Diameter of cylinders, low pressure, inches 92
+    Ratio of piston rods. inches 1.0; 1.973; 4.798
+    Stroke, inches 42
+    Length of connecting rod between centers, inches 84
+    Volume swept by L.P. piston, cubic feet 161. 574
+    Diameter of H.P. valve, one for each engine, top 18.5 bottom 17.5
+    Diameter of I.P. valve, two for each engine, inches 23
+    Diameter of L.P. valve, four for each engine, inches 21
+
+ </documentation>
+
+ <property>fcs/throttle-cmd-norm</property>
+ <property>fcs/mixture-cmd-norm</property>
+
+ <channel name="boilers">
+  <!-- Temporary system that just outputs the absolute pressure. -->
+
+  <fcs_function name="propulsion/boiler/steam-absolute-pressure-psi">
+   <function>
+    <sum>
+     <value>40.0</value> <!-- Boiler steam pressure. -->
+     <product>
+      <value>0.0069444444</value> <!-- PSF to PSI. -->
+      <property>atmosphere/P-psf</property>
+     </product>
+    </sum>
+   </function>
+  </fcs_function>
+
+ </channel>
+
+ <channel name="no engine model">
+
+  <!-- Temporary system that just sets the engine RPM. -->
+  <!-- fcs_function name="propulsion/engine/engine-rpm">
+   <function>
+    <table>
+     <independentVar lookup="row">fcs/throttle-cmd-norm</independentVar>
+      <tableData>
+       0.0    0.0
+       1.0  100.0
+      </tableData>     
+    </table>
+   </function>
+  </fcs_function -->
+
+ </channel>
+
+ <channel name="simple steam engine model">
+
+  <!-- Temporary system that just sets the engine mean effective pressure.
+
+       The slide valves of the engine were most likely set to only admit full
+       pressure steam for part of the stroke to utilize steam expansion.
+       The effective mean pressure is then
+         p = p_init * (1 + log R)/R - back pressure
+       where R is the range of expansion, i.e.
+       volume at cutoff / volume at end of stroke.
+
+       The evidence seems to suggest that the cutoff point of this engine
+       could be adjusted on the fly. Hence, there are (at least) two primary
+       engine controls: the main steam thottle valve restricting the flow of
+       steam to the engine and the control setting the cutoff point.
+
+       Here:
+         fcs/throttle-cmd-norm - The main steam throttle valve.
+         fcs/mixture-cmd-norm  - The cutoff point.
+  -->
+
+  <fcs_function name="propulsion/engine/range-of-expansion">
+   <function>
+    <table>
+     <independentVar lookup="row">fcs/mixture-cmd-norm</independentVar>
+     <tableData>
+       0.0    0.37
+       1.0    1.00
+     </tableData>
+    </table>
+   </function>
+  </fcs_function>
+
+  <fcs_function name="propulsion/engine/steam-mean-pressure-psi">
+   <function>
+    <product>
+     <max>
+      <value>0.0</value>
+      <sum>
+       <product>
+        <property>propulsion/boiler/steam-absolute-pressure-psi</property>
+        <quotient>
+         <sum>
+          <value>1.0</value>
+          <ln>
+           <property>propulsion/engine/range-of-expansion</property>
+          </ln>
+         </sum>
+         <property>propulsion/engine/range-of-expansion</property>
+        </quotient>
+       </product>
+       <value>-6.0</value> <!-- Condenser back-pressure. Guessed. -->
+      </sum>
+     </max>
+     <table>
+      <independentVar lookup="row">fcs/throttle-cmd-norm</independentVar>
+      <tableData>
+        0.0    0.0
+        1.0    1.0
+      </tableData>     
+     </table>
+    </product>
+   </function>
+  </fcs_function>
+
+  <fcs_function name="propulsion/engine/power-available-hp">
+   <!-- IHP = P*L*A*N/33000 [Ripper:1909:HE]. Units differ slightly here. -->
+   <function>
+    <sum>
+     <product>
+      <value>0.90</value>          <!-- Efficiency IHP to BHP.
+                                        ~0.9 according to [Ripper:1909:HE].
+                                   -->
+      <value>2.5252525e-06</value> <!-- To HP. -->
+      <value>2.0</value>           <!-- 2 double acting cylinders. -->
+      <property>propulsion/engine/steam-mean-pressure-psi</property>
+      <sum>
+       <!-- in^3 -->
+       <value>27646.015</value>  <!-- Swept volume per cylinder out-stroke. -->
+       <value>24725.905</value>  <!-- Swept volume per cylinder in-stroke.  -->
+      </sum>
+      <property>propulsion/engine/engine-rpm</property>
+     </product>
+     <product>
+      <value>-0.035</value> <!-- Guess. Fricition. -->
+      <property>propulsion/engine/engine-rpm</property>
+      <property>propulsion/engine/engine-rpm</property>
+     </product>
+    </sum>
+   </function>
+  </fcs_function>
+
+  <fcs_function name="propulsion/engine/power-difference-hp">
+   <function>
+    <difference>
+     <property>propulsion/engine/power-available-hp</property>
+     <property>propulsion/engine/power-required-hp</property>
+    </difference>
+   </function>
+  </fcs_function>
+
+  <integrator name="propulsion/engine/engine-rpm">
+   <input>propulsion/engine/power-difference-hp</input>
+   <c1>0.2</c1>
+   <clipto>
+    <min>0.0000001</min>
+    <max>240.0</max>
+   </clipto>
+  </integrator>
+
+  <!-- FIXME: This will start to lose precision after some hours. -->
+  <integrator name="propulsion/engine/shaft-revolutions-norm">
+   <input>propulsion/engine/engine-rpm</input>
+   <c1>0.016666667</c1>
+  </integrator>
+
+  <fcs_function name="propulsion/engine/shaft-position-norm">
+   <function>
+    <difference>
+     <property>propulsion/engine/shaft-revolutions-norm</property>
+     <integer>
+      <property>propulsion/engine/shaft-revolutions-norm</property>
+     </integer>
+    </difference>
+   </function>
+  </fcs_function>
+
+ </channel>
+
+ <channel name="propeller">
+
+  <fcs_function name="propulsion/engine/advance-ratio">
+   <function>
+    <quotient>
+     <property>hydro/vbx-fps</property>
+     <sum>
+      <value>0.000000001</value>
+      <product>
+       <value>0.016666667</value>
+       <property>propulsion/engine/engine-rpm</property>
+       <value>9.0</value>
+      </product>
+     </sum>
+    </quotient>
+   </function>
+  </fcs_function>
+
+  <fcs_function name="propulsion/engine/thrust-coefficient">
+   <function>
+    <table>
+     <independentVar lookup="row">propulsion/engine/advance-ratio</independentVar>
+      <tableData>
+        0.00000   0.54293
+        0.05000   0.47572
+        0.10000   0.40851
+        0.15000   0.47248
+        0.20000   0.53644
+        0.25000   0.53199
+        0.30000   0.52755
+        0.35000   0.52388
+        0.40000   0.52021
+        0.45000   0.52597
+        0.50000   0.53172
+        0.55000   0.53451
+        0.60000   0.53730
+        0.65000   0.53025
+        0.70000   0.52321
+        0.75000   0.50870
+        0.80000   0.49420
+        0.85000   0.47423
+        0.90000   0.45426
+        0.95000   0.43279
+        1.00000   0.41131
+        1.05000   0.38241
+        1.10000   0.35351
+        1.15000   0.33479
+        1.20000   0.31608
+        1.25000   0.28966
+        1.30000   0.26325
+        1.35000   0.23565
+        1.40000   0.20806
+        1.45000   0.17446
+        1.50000   0.14085
+        1.55000   0.11786
+        1.60000   0.08528
+        1.65000   0.05242
+        1.70000   0.01812
+        1.75000  -0.01308
+        1.80000  -0.04596
+        1.85000  -0.07981
+        1.90000  -0.11366
+        1.95000  -0.14752
+        2.00000  -0.18137
+      </tableData>
+    </table>
+   </function>
+  </fcs_function>
+
+  <fcs_function name="propulsion/engine/power-coefficient">
+   <function>
+    <table>
+     <independentVar lookup="row">propulsion/engine/advance-ratio</independentVar>
+      <tableData>
+   0.00000   0.83037
+   0.05000   0.72964
+   0.10000   0.62890
+   0.15000   0.76283
+   0.20000   0.89677
+   0.25000   0.90258
+   0.30000   0.90840
+   0.35000   0.90909
+   0.40000   0.90979
+   0.45000   0.89429
+   0.50000   0.87879
+   0.55000   0.86736
+   0.60000   0.85593
+   0.65000   0.84421
+   0.70000   0.83248
+   0.75000   0.81495
+   0.80000   0.79743
+   0.85000   0.77442
+   0.90000   0.75142
+   0.95000   0.72477
+   1.00000   0.69812
+   1.05000   0.65884
+   1.10000   0.61956
+   1.15000   0.59369
+   1.20000   0.56783
+   1.25000   0.52882
+   1.30000   0.48981
+   1.35000   0.44723
+   1.40000   0.40464
+   1.45000   0.35066
+   1.50000   0.29668
+   1.55000   0.25861
+   1.60000   0.20441
+   1.65000   0.14916
+   1.70000   0.09068
+   1.75000   0.03719
+   1.80000  -0.01885
+   1.85000   0.01000
+   1.90000   0.01000
+   1.95000   0.01000
+   2.00000   0.01000
+      </tableData>
+    </table>
+   </function>
+  </fcs_function>
+
+  <fcs_function name="propulsion/engine/thrust-lbs">
+   <function>
+    <product>
+     <property>hydro/environment/rho-slug_ft3</property>
+     <value>0.000277777</value> <!-- 1/60^2 -->
+     <property>propulsion/engine/engine-rpm</property>
+     <property>propulsion/engine/engine-rpm</property>
+     <!--value>6561</value-->        <!-- D^4 -->
+     <value>48000</value>  
+     <property>propulsion/engine/thrust-coefficient</property>
+    </product>
+   </function>
+   <output>external_reactions/propeller/magnitude</output>
+  </fcs_function>
+
+  <fcs_function name="propulsion/engine/power-required-hp">
+   <function>
+    <product>
+     <value>0.0018181818</value> <!-- slug ft^2 / s^3 -> hp -->
+     <property>hydro/environment/rho-slug_ft3</property>
+     <value>0.000004629</value>  <!-- 1/60^3 -->
+     <property>propulsion/engine/engine-rpm</property>
+     <property>propulsion/engine/engine-rpm</property>
+     <property>propulsion/engine/engine-rpm</property>
+     <value>59049</value>        <!-- D^5 -->
+     <property>propulsion/engine/power-coefficient</property>
+    </product>
+   </function>
+  </fcs_function>
+
+ </channel>
+
+</system>

@@ -1,0 +1,467 @@
+<?xml version="1.0"?>
+<!--
+  U.S.S. Olympia.
+
+  Copyright (C) 2008 - 2022  Jeffery S. Koppe  (jeff.koppe(at)gmail.com)
+  This file is licensed under the GPL license version 2 or later.
+-->
+<PropertyList>
+
+ <sim>
+
+  <description>U.S.S. Olympia.</description>
+  <author>Jeffery S. Koppe</author>
+  <aircraft-version>2022-03-27</aircraft-version>
+
+  <long-description>
+USS Olympia was an armored cruiser commissioned by the United States in 1895. Built in San Francisco, California, she became the flagship of Commodore Dewey's US Far East Squadron. When the Spanish-American War erupted in 1898, Dewey descended upon the unprepared Spanish fleet in Manila, Philipines, and won a stunning surprise victory defined by his famous words to his flag-captain, "You may fire when you are ready, Gridley." Gridely fired and Dewey became a hero of the war and his flagship an icon of the United States emerging as a world power.
+
+Olympia's last duty was transporting the first American Unknown Soldier from Europe to Washington, DC, in 1922.
+
+The Olympia has been preserved as one of the very few pre-Dreadnaughts existing in the world and can be seen at its berth in Philadelphia, Pennsylvania.
+  </long-description>
+
+  <tags>
+   <tag>seacraft</tag>
+   <!-- tag>steam-engine</tag -->
+   <tag>single-engine</tag>
+   <!-- tag>1860s</tag -->
+   <!-- tag>civilwar</tag -->
+  </tags>
+
+  <status type="string">alpha</status>
+  <rating>
+   <FDM type="int">1</FDM>
+   <systems type="int">1</systems>
+   <cockpit type="int">1</cockpit>
+   <model type="int">2</model>
+  </rating>
+
+  <flight-model>jsb</flight-model>
+  <aero>USS_Olympia</aero>
+
+  <presets>
+   <onground type="bool">true</onground>
+   <!-- altitude-agl-ft type="double">6.0</altitude-agl-ft -->
+  </presets>
+
+  <startup>
+   <splash-texture>Aircraft/USS_Olympia/splash.png</splash-texture>
+  </startup>
+
+ <!-- Aircraft specific help. -->
+  <help include="help.xml"/>
+
+  <!-- 3d model -->
+  <model>
+   <path>Aircraft/USS_Olympia/Models/USS_Olympia.xml</path>
+  </model>
+
+  <!-- Views -->
+  <view n="0">
+   <!-- Pilot's position. -->
+   <name>Pilot House View</name>
+   <internal>true</internal>
+   <config>
+   <eye-fixed type="bool">true</eye-fixed>
+   <from-model type="bool">true</from-model>
+    <from-model-idx type="int">0</from-model-idx>
+    <!-- x/y/z == right/up/back -->
+    <x-offset-m type="double">  -1.500 </x-offset-m>
+    <y-offset-m type="double">  13.577 </y-offset-m>
+    <z-offset-m type="double">  32.500 </z-offset-m>
+   </config>
+  </view>
+
+  <view n="100">
+   <name>Port Bridge View</name>
+   <type>lookfrom</type>
+   <internal type="bool">true</internal>
+   <config>
+    <from-model type="bool">true</from-model>
+    <from-model-idx type="int">0</from-model-idx>
+    <!-- x/y/z == right/up/back -->
+    <x-offset-m type="double">  -5.800 </x-offset-m>
+    <y-offset-m type="double">  13.577 </y-offset-m>
+    <z-offset-m type="double">  33.000 </z-offset-m>
+   </config>
+  </view>
+
+  <view n="101">
+   <name>Stbd Bridge View</name>
+   <type>lookfrom</type>
+   <internal type="bool">true</internal>
+   <config>
+    <from-model type="bool">true</from-model>
+    <from-model-idx type="int">0</from-model-idx>
+    <!-- x/y/z == right/up/back -->
+    <x-offset-m type="double">  5.800 </x-offset-m>
+    <y-offset-m type="double">  13.677 </y-offset-m>
+    <z-offset-m type="double">  33.000 </z-offset-m>
+   </config>
+  </view>
+
+  <view n="102">
+   <name>Stern Deck View</name>
+   <type>lookfrom</type>
+   <internal type="bool">true</internal>
+   <config>
+    <from-model type="bool">true</from-model>
+    <from-model-idx type="int">0</from-model-idx>
+    <!-- x/y/z == right/up/back -->
+    <x-offset-m type="double">  -3.500000 </x-offset-m>
+    <y-offset-m type="double">  12.71561 </y-offset-m>
+    <z-offset-m type="double">  69.348787 </z-offset-m>
+    <heading-offset-deg type="double"> 180 </heading-offset-deg>
+    <default-heading-offset-deg type="double"> 180 </default-heading-offset-deg>
+   </config>
+  </view>
+
+  <!-- Move the center of the external views. -->
+  <view n="1">
+   <config>
+    <target-y-offset-m> 15.0 </target-y-offset-m>
+    <target-z-offset-m> 40.0 </target-z-offset-m>
+   </config>
+  </view>
+  <view n="2">
+   <config>
+    <target-y-offset-m> 15.0 </target-y-offset-m>
+    <target-z-offset-m> 40.0 </target-z-offset-m>
+   </config>
+  </view>
+  <view n="3">
+   <config>
+    <target-z-offset-m> 40.0 </target-z-offset-m>
+    <target-y-offset-m> 15.0 </target-y-offset-m>
+   </config>
+  </view>
+  <view n="5">
+   <config>
+    <target-z-offset-m> 40.0 </target-z-offset-m>
+    <target-y-offset-m> 15.0 </target-y-offset-m>
+   </config>
+  </view>
+  <view n="6">
+   <config>
+    <target-z-offset-m> 40.0 </target-z-offset-m>
+    <target-y-offset-m> 15.0 </target-y-offset-m>
+   </config>
+  </view>
+
+  <chase-distance-m type="double">-150.0</chase-distance-m>
+
+  <!-- sound>
+   <audible>true</audible>
+   <path>Aircraft/Submarine_Scout/Sounds/Submarine_Scout-sound.xml</path>
+  </sound -->
+
+  <!-- Aircraft specific help. -->
+  <!-- help include="help.xml"/ -->
+
+<!--  <systems>
+  <electrical>
+    <path/>
+   </electrical>
+  </systems>
+-->
+  <instrumentation>
+   <!-- path>Aircraft/Submarine_Scout/Systems/instrumentation.xml</path -->
+  </instrumentation>
+
+  <!-- Armament etc. -->
+  <!-- submodels>
+   <serviceable type="bool">true</serviceable>
+   <path></path>
+  </submodels -->
+
+  <multiplay>
+   <generic>
+   </generic>
+  </multiplay>
+
+  <max-simtime-per-frame n="0" type="double">0.1</max-simtime-per-frame>
+
+  <menubar>
+   <default>
+    <menu n="100">
+     <label>USS Olympia</label>
+     <item>
+      <label>About</label>
+      <binding>
+       <command>nasal</command>
+       <script>Olympia.about()</script>
+      </binding>
+     </item>
+    </menu>
+   </default>
+  </menubar>
+
+ </sim>
+
+
+ <payload>
+  <weight>
+   <name type="string">Coal in port bunker</name>
+   <weight-lb alias="/fdm/jsbsim/inertia/pointmass-weight-lbs[0]"/>
+   <min-lb type="double">0.0</min-lb>
+   <max-lb type="double">50000.0</max-lb>
+  </weight>
+  <weight>
+   <name type="string">Coal in starboard bunker</name>
+   <weight-lb alias="/fdm/jsbsim/inertia/pointmass-weight-lbs[1]"/>
+   <min-lb type="double">0.0</min-lb>
+   <max-lb type="double">50000.0</max-lb>
+  </weight>
+  <weight>
+   <name type="string">Water in the starboard boiler</name>
+   <weight-lb alias="/fdm/jsbsim/inertia/pointmass-weight-lbs[2]"/>
+   <min-lb type="double">0.0</min-lb>
+   <max-lb type="double">20900.0</max-lb>
+  </weight>
+  <weight>
+   <name type="string">Water in the port boiler</name>
+   <weight-lb alias="/fdm/jsbsim/inertia/pointmass-weight-lbs[3]"/>
+   <min-lb type="double">0.0</min-lb>
+   <max-lb type="double">20900.0</max-lb>
+  </weight>
+  <weight>
+   <name type="string">Stores</name>
+   <weight-lb alias="/fdm/jsbsim/inertia/pointmass-weight-lbs[4]"/>
+   <min-lb type="double">0.0</min-lb>
+   <max-lb type="double">30000.0</max-lb>
+  </weight>
+  <weight>
+   <name type="string">Ammunition and powder</name>
+   <weight-lb alias="/fdm/jsbsim/inertia/pointmass-weight-lbs[5]"/>
+   <min-lb type="double">0.0</min-lb>
+   <max-lb type="double">50000.0</max-lb>
+  </weight>
+  <weight>
+   <name type="string">Flooded</name>
+   <weight-lb alias="/fdm/jsbsim/inertia/pointmass-weight-lbs[6]"/>
+   <min-lb type="double">0.0</min-lb>
+   <max-lb type="double">50000.0</max-lb>
+  </weight>
+
+ </payload>
+
+ <!-- instrumentation n="0">
+ </instrumentation -->
+
+ <nasal>
+
+  <turrets>
+    <file>Aircraft/USS_Olympia/Nasal/turrets.nas</file>
+  </turrets>
+
+  <aground>
+    <file>Aircraft/USS_Olympia/Nasal/aground2.nas</file>
+  </aground>
+
+  <panel>
+    <file>Aircraft/USS_Olympia/Nasal/panel.nas</file>
+  </panel>
+
+  <!-- statistics>
+    <file>Aircraft/USS_Olympia/Nasal/statistics.nas</file>
+  </statistics -->
+
+
+ </nasal>
+
+
+
+
+<!-- Keyboard commands -->
+ <input>
+  <keyboard>
+
+   <key n="104">
+      <name>h</name>
+      <desc>Toggle Panel</desc>
+      <binding>
+        <command>nasal</command>
+        <script>
+          var showing = getprop("/sim/gui/canvas/window[1]/showing");
+          if(showing > 0)
+             {panel.hide();}
+          else
+            {panel.show();}
+        </script>
+      </binding>
+   </key>
+
+    <key n="127">
+      <name>Delete</name>
+      <desc>Toggles Propeller Axis to Reverse Thrust</desc>
+      <binding>
+        <command>property-cycle</command>
+        <property>fdm/jsbsim/external_reactions/propeller/x</property>
+        <value>-1</value>
+        <value>1</value>
+      </binding>
+   </key>
+
+  <key n="357">
+      <name>ArrowUp</name>
+      <desc>Increase throttle by 10%</desc>
+      <repeatable type="bool">true</repeatable>
+      <binding>
+       <command>nasal</command>
+       <script>
+         controls.incThrottle(0.1, 1.0)
+       </script>
+      </binding>
+   </key>
+ <key n="56">
+      <name>8</name>
+      <desc>Increase throttle by 10%</desc>
+      <repeatable type="bool">true</repeatable>
+      <binding>
+       <command>nasal</command>
+       <script>
+         controls.incThrottle(0.1, 1.0)
+       </script>
+      </binding>
+   </key>
+
+   <key n="359">
+      <name>ArrowDown</name>
+      <desc>Decrease throttle by 10%</desc>
+      <repeatable type="bool">true</repeatable>
+      <binding>
+       <command>nasal</command>
+       <script>
+         controls.incThrottle(-0.1, -1.0);
+       </script>
+      </binding>
+   </key>
+   <key n="50">
+      <name>2</name>
+      <desc>Decrease throttle by 10%</desc>
+      <repeatable type="bool">true</repeatable>
+      <binding>
+       <command>nasal</command>
+       <script>
+         controls.incThrottle(-0.1, -1.0);
+       </script>
+      </binding>
+   </key>
+
+   <key n="114"> <!-- 102=f  70=F 114=r 82=R-->
+      <name>r</name>
+      <desc>Refloat</desc>
+      <repeatable type="bool">true</repeatable>
+      <binding>
+        <command>nasal</command>
+        <script>
+          aground.refloat();
+        </script>
+      </binding>
+   </key>
+
+   <!--Turret Rotation -->
+   <key n="100"> <!-- 102=f  70=F 114=r 82=R-->
+      <name>d</name>
+      <desc>Rotate forward turret to port</desc>
+      <repeatable type="bool">true</repeatable>
+      <binding>
+        <command>nasal</command>
+        <script>
+          turrets.rotate_turret("/sim/model/fore-turret-bearing-deg", 1, -265, 265);
+        </script>
+      </binding>
+   </key>
+   <key n="102"> <!-- 102=f  70=F 114=r 82=R-->
+      <name>f</name>
+      <desc>Rotate forward turret to starboard</desc>
+      <repeatable type="bool">true</repeatable>
+      <binding>
+        <command>nasal</command>
+        <script>
+          turrets.rotate_turret("/sim/model/fore-turret-bearing-deg", -1, -265, 265);
+        </script>
+      </binding>
+   </key>
+   <key n="68"> <!-- 102=f  70=F 114=r 82=R-->
+      <name>D</name>
+      <desc>Rotate aft turret to port</desc>
+      <repeatable type="bool">true</repeatable>
+      <binding>
+        <command>nasal</command>
+        <script>
+          turrets.rotate_turret("/sim/model/aft-turret-bearing-deg", -1, -265, 265);
+        </script>
+      </binding>
+   </key>
+   <key n="70"> <!-- 102=f  70=F 114=r 82=R-->
+      <name>F</name>
+      <desc>Rotate aft turret to starboard</desc>
+      <repeatable type="bool">true</repeatable>
+       <binding>
+        <command>nasal</command>
+        <script>
+          turrets.rotate_turret("/sim/model/aft-turret-bearing-deg", 1, -265, 265);
+        </script>
+      </binding>
+   </key>
+
+   <key n="103"> <!-- 107=k 75=K   106=j 74=J -->
+      <name>g</name>
+      <desc>Elevate fore turret guns</desc>
+      <repeatable type="bool">true</repeatable>
+       <binding>
+        <command>nasal</command>
+        <script>
+          turrets.rotate_turret("/sim/model/fore-turret-guns-elevation-deg", 1, -10, 45);
+        </script>
+      </binding>
+   </key>
+   <key n="115"> <!-- 107=k 75=K   106=j 74=J -->
+      <name>s</name>
+      <desc>Depress fore turret guns</desc>
+      <repeatable type="bool">true</repeatable>
+       <binding>
+        <command>nasal</command>
+        <script>
+          turrets.rotate_turret("/sim/model/fore-turret-guns-elevation-deg", -1, -10, 45);
+        </script>
+      </binding>
+   </key>
+   <key n="71"> <!-- 107=k 75=K   106=j 74=J -->
+      <name>G</name>
+      <desc>Elevate Aft turret guns</desc>
+      <repeatable type="bool">true</repeatable>
+       <binding>
+        <command>nasal</command>
+        <script>
+          turrets.rotate_turret("/sim/model/aft-turret-guns-elevation-deg", 1, -10, 45);
+        </script>
+      </binding>
+   </key>
+   <key n="83"> <!-- 107=k 75=K   106=j 74=J -->
+      <name>S</name>
+      <desc>Depress Aft turret guns</desc>
+      <repeatable type="bool">true</repeatable>
+       <binding>
+        <command>nasal</command>
+        <script>
+          turrets.rotate_turret("/sim/model/aft-turret-guns-elevation-deg", -1, -10, 45);
+        </script>
+      </binding>
+   </key>
+
+  </keyboard>
+ </input>
+
+ <fdm>
+  <jsbsim>
+   <fcs>
+    <throttle-cmd-norm alias="/controls/engines/engine/throttle"/>
+    <mixture-cmd-norm  alias="/controls/engines/engine/mixture"/>
+   </fcs>
+  </jsbsim>
+ </fdm>
+
+</PropertyList>

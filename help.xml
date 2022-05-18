@@ -1,0 +1,108 @@
+<?xml version="1.0"?>
+
+<!--
+  USS Olympia for FlightGear.
+
+  Copyright (C) 2022  Jeffery S. Koppe (jeff.koppe@gmail.com)
+  This file is licensed under the GPL license version 2 or later.
+-->
+<PropertyList>
+
+ <title>U.S.S. Olympia, C-6</title>
+ <!-- Specific keys -->
+
+ <key>
+  <name>h</name>
+  <desc>Toggle instrument panel</desc>
+ </key>
+ <key>
+  <name>r</name>
+  <desc>Refloat ship.</desc>
+ </key>
+
+
+<key>
+  <name>......</name>
+  <desc>   NUMERIC   ... ......</desc>
+ </key>
+ <key>
+  <name>8</name>
+  <desc>Increase engine.</desc>
+ </key>
+ <key>
+  <name>2</name>
+  <desc>Decrease engine.</desc>
+ </key>
+ <key>
+  <name>[DEL]</name>
+  <desc>Reverse engines.</desc>
+ </key>
+ <key>
+  <name>4</name>
+  <desc>Rudder to port.</desc>
+ </key>
+ <key>
+  <name>5</name>
+  <desc>Rudder to center.</desc>
+ </key>
+ <key>
+  <name>6</name>
+  <desc>Rudder to port.</desc>
+ </key>
+
+<key>
+  <name>......</name>
+  <desc>   ARROWS   ... ......</desc>
+ </key>
+ <key>
+  <name>[UP]</name>
+  <desc>Increase engine.</desc>
+ </key>
+ <key>
+  <name>[DOWN]</name>
+  <desc>Decrease engine.</desc>
+ </key>
+ <key>
+  <name>[DEL]</name>
+  <desc>Reverse engines.</desc>
+ </key>
+ <key>
+  <name>[LEFT]</name>
+  <desc>Rudder to port.</desc>
+ </key>
+ <key>
+  <name>5</name>
+  <desc>Rudder to center.</desc>
+ </key>
+ <key>
+  <name>[RIGHT] </name>
+  <desc>Rudder to port.</desc>
+ </key>
+
+
+ <key>
+  <name>......</name>
+  <desc>   FIRE CONTROL   ... ......</desc>
+ </key>
+ <key>
+  <name>f / F</name>
+  <desc>Rotate FORE/AFT turret to starboard.</desc>
+ </key>
+ <key>
+  <name>d / D</name>
+  <desc>Rotate FORE/AFT turret to port.</desc>
+ </key>
+ <key>
+  <name>k / K</name>
+  <desc>Elevate FORE/AFT main guns.</desc>
+ </key>
+ <key>
+  <name>j / J</name>
+  <desc>Lower FORE/AFT main guns.</desc>
+ </key>
+
+ <!-- Handling instructions. -->
+ <text>
+Most standard keys have no effect on a ship.
+ </text>
+</PropertyList>

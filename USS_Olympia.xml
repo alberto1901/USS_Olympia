@@ -1,0 +1,509 @@
+<?xml version="1.0"?>
+<!--
+
+  U.S.S. Olympia "flight" model for JSBSim.
+
+    Copyright (C) 2012 - 2018  Anders Gidenstam  (anders(at)gidenstam.org)
+
+    This program is free software; you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation; either version 2 of the License, or
+    (at your option) any later version.
+  
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+  
+    You should have received a copy of the GNU General Public License
+    along with this program; if not, write to the Free Software
+    Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+  
+-->
+<?xml-stylesheet type="text/xsl" href="http://jsbsim.sourceforge.net/JSBSim.xsl"?>
+<fdm_config name="USS_Olympia" version="2.0" release="ALPHA"
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+   xsi:noNamespaceSchemaLocation="http://jsbsim.sourceforge.net/JSBSim.xsd">
+
+ <fileheader>
+  <author>Anders Gidenstam</author>
+  <email>anders at gidenstam dot org</email>
+
+  <filecreationdate>2012-07-14</filecreationdate>
+  <version>2018-11-19</version>
+
+  <description>Models the U.S.S. Olympia.</description>
+
+  <license>
+   <licenseName>GPL</licenseName>
+   <licenseURL>http://www.gnu.org/licenses/gpl.html</licenseURL>
+  </license>
+  <note>
+   This model was created using publicly available data, publicly available
+   technical reports, textbooks, and guesses. It contains no proprietary or
+   restricted data. It has been validated only to the extent that it may seem
+   to "fly right", and possibly to comply to published, publicly known, 
+   performance data (maximum speed, endurance, etc.).
+
+   This model is distributed in the hope that it will be useful,
+   but WITHOUT ANY WARRANTY; without even the implied warranty of
+   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+   GNU General Public License for more details.
+  </note>
+
+  <reference refID="Miller:1974:PC"
+             author="Edward M. Miller (ed.)"
+             title="Project Cheesebox - A journey into history"
+             date="1974"/>
+  <reference refID="Peterkin:1985:DRM"
+             author="Ernest W. Peterkin"
+             title="Drawings of the U.S.S. Olympia"
+             date="1985"/>
+  <reference refID="Ripper:1909:HE"
+             author="William Ripper"
+             title="Heat Engines"
+             date="1909"/>
+  <reference refID="Ripper:1922:SE"
+             author="William Ripper"
+             title="Steam-Engine  Theory and Practice"
+             date="1922"/>
+
+ </fileheader>
+
+ <documentation>
+  The origin of the structural frame is at the bow of the ship 3.0 m above
+  the hull datum line (at the bottom of the keel).
+ </documentation>
+
+ <metrics>
+  <wingarea unit="FT2">     1510.0000  </wingarea> <!-- FIXME: update these -->
+  <wingspan unit="FT">       114.0000  </wingspan>
+  <chord unit="FT">           16.4583  </chord>
+  <htailarea unit="FT2">     226.6750  </htailarea>
+  <htailarm unit="FT">        12.2147  </htailarm>
+  <vtailarea unit="FT2">     319.0423  </vtailarea>
+  <vtailarm unit="FT">        17.2533  </vtailarm>
+   <location name="AERORP" unit="M">
+     <x> 25.45 </x>
+     <y>  0.00 </y>
+     <z>  0.00 </z>
+   </location>
+   <location name="EYEPOINT" unit="M">
+     <x> 7.64 </x>
+     <y> 1.58 </y>
+     <z> 0.00 </z>
+   </location>
+   <location name="VRP" unit="M">
+     <x> 0.00 </x>
+     <y> 0.00 </y>
+     <z>-3.00 </z>
+   </location>
+ </metrics>
+
+ <mass_balance>
+  <documentation>
+   Information from ([Miller:1974:PC], pp.169, Letter by J. Ericsson 1861-09-15)
+     Speed: Immersed section 312 ft^2, engine 400 hp, est. speed >=9 knots.
+
+     Displacement: Total 2811200 lbs. With 18 in freeboard 2222080 lbs.
+
+     Total weight of iron in vessel and turret: somewhat above 940800 lbs.
+
+   Information from ([Miller:1974:PC], pp.145, Letter by J. Ericsson 1861-10-?)
+     Displacement: Total 2881364 lbs.
+     Launching draft: 6 ft 11 in (upper vessel immersed 5 in).
+                      Displacement: 1172111 lbs.
+     Weight of turret about 200000 lbs (to be added).
+
+   Information from ([Peterkin:1985:DRM], drawing no. 154):
+     Shear lines on commissioning:
+     "The diagram indicates that the stern was 13 in above the water line,
+     making the bow 32 in above the water line and the average freeboard
+     amidships 22 1/2 in, 4 1/2 in above the design water line."
+
+  </documentation>
+  <documentation>
+    Rough model to estimate CG and inertia tensor.
+
+    % Steiners theorem:
+    % Ixx = \bar{Ixx} + m sqrt(\bar{y}^2 + \bar{z}^2)
+    % Ixy = \bar{Ixy} + m \bar{x} \bar{y}
+
+    % The hull is a uniform 52.73x12.60x3.00 meter box.
+    % CG in the middle (i.e. at (25.45, 0, -1)) m.
+    m_hull = 0.45359237 * (1172111 - 40000) % KG
+    a = 52.73    % m
+    b = 12.60    % m
+    c = 3.0      % m
+
+    Ixx_hull = 1/12 * m_hull * (b^2 + c^2)
+    Iyy_hull = 1/12 * m_hull * (a^2 + c^2)
+    Izz_hull = 1/12 * m_hull * (a^2 + b^2)
+    Ixy_hull = Ixz_hull = Iyz_hull = 0
+
+    % The turret is a cylindrical shell with a diameter of 21ft and a
+    % height of 9 ft weighing 200000 lbs with CG at (25.45, 0, 2)m in the
+    % structural frame.
+    m_turret = 0.45359237 * 200000 % KG
+    h = 0.3048 * 9 % m
+    r = 0.3048 * 10.5 % m
+    Ixx_turret = 1/2 * m_turret * r^2 + 1/12 * m_turret * h^2 + \
+                 m_turret * sqrt(0^2 + 3^2)
+    Iyy_turret = Ixx_turret
+    Izz_turret = m_turret * r^2
+    Ixy_turret = Ixz_turret = Iyz_turret = 0
+
+
+    Ixx = Ixx_hull + Ixx_turret
+    Iyy = Iyy_hull + Iyy_turret
+    Izz = Izz_hull + Izz_turret
+    Ixy = Ixy_hull + Ixy_turret
+    Ixz = Ixz_hull + Ixz_turret
+    Iyz = Iyz_hull + Iyz_turret
+
+  </documentation>
+  <ixx unit="KG*M2"> 7.9726e+06 </ixx>
+  <iyy unit="KG*M2"> 1.2016e+08 </iyy>
+  <izz unit="KG*M2"> 1.2671e+08 </izz>
+  <emptywt unit="LBS" > 1332111 </emptywt>
+  <location name="CG" unit="M">
+   <x> 25.45 </x>
+   <y>  0.00 </y>
+   <z> -1.00 </z>
+  </location>
+
+  <documentation>
+   Adjustable payload pointmasses.
+  </documentation>
+
+  <pointmass name="Port coal bunker">
+   <weight unit="LBS"> 25000.0 </weight>
+   <location unit="M">
+    <x> 33.00 </x>
+    <y> -3.50 </y>
+    <z> -2.00 </z>
+   </location>
+  </pointmass>
+  <pointmass name="Starboard coal bunker">
+   <weight unit="LBS"> 25000.0 </weight>
+   <location unit="M">
+    <x> 33.00 </x>
+    <y>  3.50 </y>
+    <z> -2.00 </z>
+   </location>
+  </pointmass>
+
+  <!-- A total of 2500 gallons according to the contract. [Miller:1974:PC] -->
+  <pointmass name="Water in the port boiler">
+   <weight unit="LBS"> 20000.0 </weight>
+   <location unit="M">
+    <x> 30.00 </x>
+    <y> -1.50 </y>
+    <z> -1.50 </z>
+   </location>
+  </pointmass>
+  <pointmass name="Water in the starboard boiler">
+   <weight unit="LBS"> 20000.0 </weight>
+   <location unit="M">
+    <x> 30.00 </x>
+    <y>  1.50 </y>
+    <z> -1.50 </z>
+   </location>
+  </pointmass>
+
+  <pointmass name="Stores">
+   <weight unit="LBS"> 20000.0 </weight>
+   <location unit="M">
+    <x> 10.00 </x>
+    <y>  0.00 </y>
+    <z> -2.50 </z>
+   </location>
+  </pointmass>
+
+  <pointmass name="Ammunition">
+   <weight unit="LBS"> 50000.0 </weight>
+   <location unit="M">
+    <x> 24.00 </x>
+    <y>  0.00 </y>
+    <z> -2.50 </z>
+   </location>
+  </pointmass>
+
+  <!-- Movable weights. -->
+  <!-- The 9in Dahlgren guns weighed about 15700lbs each.
+       ([Peterkin:1985:DRM], p.500) -->
+  <!-- Gun carriage: about 3200lbs (NOAA) -->
+  <pointmass name="IX in. Dahlgren gun w. carriage">
+   <weight unit="LBS"> 18900.0 </weight>
+   <location unit="M">
+    <x> 24.450 </x>
+    <y> -0.762 </y>
+    <z>  1.650 </z>
+   </location>
+  </pointmass>
+  <pointmass name="IX in. Dahlgren gun w. carriage">
+   <weight unit="LBS"> 18900.0 </weight>
+   <location unit="M">
+    <x> 24.450 </x>
+    <y> -0.762 </y>
+    <z>  1.650 </z>
+   </location>
+  </pointmass>
+
+  <!-- Fixed weights. -->
+  <pointmass name="Steam engine">
+   <weight unit="LBS">40000.0</weight>
+   <location unit="M">
+    <x> 36.00 </x>
+    <y>  0.00 </y>
+    <z> -1.00 </z>
+   </location>
+  </pointmass>
+
+ </mass_balance>
+
+ <ground_reactions>
+  <documentation>
+   The hydrostatic interactions of the hull are modelled by external forces.
+  </documentation>
+
+  <contact type="STRUCTURE" name="BOW">
+   <location unit="M">
+    <!-- x>   0.00 </x>
+    <y>   0.00 </y>
+    <z>   2.00 </z -->
+    <!-- OLYMPIA MOST FORWARD POINT -->
+    <x>0.0</x>
+    <y>0.020542</y>
+    <z>0.0</z>
+   </location>
+   <static_friction_coeff> 1000000 </static_friction_coeff>
+   <dynamic_friction_coeff> 1000000 </dynamic_friction_coeff>   
+   <spring_coeff unit="LBS/FT">      200000.00 </spring_coeff>
+   <damping_coeff unit="LBS/FT/SEC"> 150000.00 </damping_coeff>
+  </contact>
+
+  <contact type="STRUCTURE" name="STERN">
+   <location unit="M">
+    <!-- x>  52.73 </x>
+    <y>   0.00 </y>
+    <z>   2.00 </z -->
+    <!-- OLYMPIA MOST AFT POINT -->
+    <x>105.534983</x>
+    <y>0.0</y>
+    <z>0.0</z>
+   </location>
+   <static_friction_coeff> 1000000 </static_friction_coeff>
+   <dynamic_friction_coeff> 1000000 </dynamic_friction_coeff>   
+   <spring_coeff unit="LBS/FT">      200000.00 </spring_coeff>
+   <damping_coeff unit="LBS/FT/SEC"> 150000.00 </damping_coeff>
+  </contact>
+
+  <contact type="STRUCTURE" name="PORT SIDE">
+   <location unit="M">
+    <!-- x>  25.45 </x>
+    <y>  -6.30 </y>
+    <z>   2.00 </z -->
+    <!-- OLYMPIA MOST PORT POINT -->
+    <x>52.021846</x>
+    <y>7.86046</y>
+    <z>0.0</z>
+   </location>
+   <static_friction_coeff> 1000000 </static_friction_coeff>
+   <dynamic_friction_coeff> 1000000 </dynamic_friction_coeff>   
+   <spring_coeff unit="LBS/FT">      200000.00 </spring_coeff>
+   <damping_coeff unit="LBS/FT/SEC"> 150000.00 </damping_coeff>
+  </contact>
+
+  <contact type="STRUCTURE" name="STARBOARD SIDE">
+   <location unit="M">
+    <!-- x>  25.45 </x>
+    <y>   6.30 </y>
+    <z>   2.00 </z -->
+    <!-- OLYMPIA MOST STBD POINT -->
+    <x>52.021846</x>
+    <y>-7.86046</y>
+    <z>0.0</z>
+   </location>
+   <static_friction_coeff> 1000000 </static_friction_coeff>
+   <dynamic_friction_coeff> 1000000 </dynamic_friction_coeff>   
+   <spring_coeff unit="LBS/FT">      200000.00 </spring_coeff>
+   <damping_coeff unit="LBS/FT/SEC"> 150000.00 </damping_coeff>
+  </contact>
+
+ </ground_reactions>
+
+ <propulsion>
+  <documentation>
+   Will be modelled using external forces.
+  </documentation>
+
+ </propulsion>
+
+ <external_reactions>
+
+  <force name="hydro-X" frame="LOCAL" unit="LBS">
+   <location unit="M">
+    <x>  25.50 </x>
+    <y>   0.00 </y>
+    <z>   0.00 </z>
+   </location>
+   <direction>
+    <x> 1.0 </x>
+    <y> 0.0 </y>
+    <z> 0.0 </z>
+   </direction>
+  </force>
+  <force name="hydro-Y" frame="LOCAL" unit="LBS">
+   <location unit="M">
+    <x>  25.50 </x>
+    <y>   0.00 </y>
+    <z>   0.00 </z>
+   </location>
+   <direction>
+    <x> 0.0 </x>
+    <y> 1.0 </y>
+    <z> 0.0 </z>
+   </direction>
+  </force>
+  <force name="hydro-Z" frame="LOCAL" unit="LBS">
+   <location unit="M">
+    <x>  25.50 </x>
+    <y>   0.00 </y>
+    <z>   0.00 </z>
+   </location>
+   <direction>
+    <x> 0.0 </x>
+    <y> 0.0 </y>
+    <z>-1.0 </z>
+   </direction>
+  </force>
+
+  <moment name="hydro-pitch" frame="BODY" unit="LBSFT">
+   <direction>
+    <x> 0.0 </x>
+    <y> 1.0 </y>
+    <z> 0.0 </z>
+   </direction>
+  </moment>
+  <moment name="hydro-roll" frame="BODY" unit="LBSFT">
+   <direction>
+    <x> 1.0 </x>
+    <y> 0.0 </y>
+    <z> 0.0 </z>
+   </direction>
+  </moment>
+  <moment name="hydro-yaw" frame="BODY" unit="LBSFT">
+   <direction>
+    <x> 0.0 </x>
+    <y> 0.0 </y>
+    <z> 1.0 </z>
+   </direction>
+  </moment>
+
+  <force name="propeller" frame="BODY" unit="LBS">
+   <location unit="M">
+    <x>  45.00 </x>
+    <y>   0.00 </y>
+    <z>  -1.80 </z>
+   </location>
+   <direction>
+    <x> 1.0 </x>
+    <y> 0.0 </y>
+    <z> 0.0 </z>
+   </direction>
+  </force>
+
+
+  <force name="mooring-north" frame="LOCAL" unit="LBS">
+   <location unit="FT">
+    <x> 3.3 </x>
+    <y> 0.0 </y>
+    <z> 0.0 </z>
+   </location>
+   <direction>
+    <x> 1.0 </x>
+    <y> 0.0 </y>
+    <z> 0.0 </z>
+   </direction>
+  </force>
+  <force name="mooring-east" frame="LOCAL" unit="LBS">
+   <location unit="FT">
+    <x> 3.3 </x>
+    <y> 0.0 </y>
+    <z> 0.0 </z>
+   </location>
+   <direction>
+    <x> 0.0 </x>
+    <y> 1.0 </y>
+    <z> 0.0 </z>
+   </direction>
+  </force>
+  <force name="mooring-down" frame="LOCAL" unit="LBS">
+   <location unit="FT">
+     <x> 3.3 </x>
+     <y> 0.0 </y>
+     <z> 0.0 </z>
+   </location>
+   <direction>
+    <x> 1.0 </x>
+    <y> 0.0 </y>
+    <z> 0.0 </z>
+   </direction>
+  </force>
+
+ </external_reactions>
+
+ <system name="steering gear">
+
+  <channel name="steering">
+
+   <summer name="tmp/rudder-pos-norm">
+    <input>fcs/rudder-cmd-norm</input>
+    <input>-fcs/aileron-cmd-norm</input>
+    <clipto>
+     <min> -1 </min>
+     <max>  1 </max>
+    </clipto>
+    <output>fcs/rudder-pos-norm</output>
+   </summer>
+
+  </channel>
+
+ </system>
+
+ <system file="hydrodynamics"/>
+ <system file="USS_Olympia-hydrodynamics"/>
+ <!-- system file="USS_Olympia-ground_reactions"/ -->
+ <system file="propulsion"/>
+
+ <!-- system file="fgfs4jsbsim" -->
+ <!-- system file="mooring-jsbsim" -->    <!-- Mooring setup for FlightGear. -->
+  <!-- Configuration -->
+  <!--  Mooring rope -->
+  <!-- property value="250.0"> mooring/rope-spring-coeff-lbs_ft </property>
+  <property value="10000.0"> mooring/max-rope-force-lbs </property>
+  <property value="20.0"> mooring/rope-length-ft </property>
+
+ </system -->
+
+ <aerodynamics>
+
+  <axis name="DRAG">
+
+   <!-- Wild guess: D = K A q_inf -->
+   <!-- A = cross sectional area (ft^2); -->
+   <function name="aero/force/D_turret">
+    <description>Drag</description>
+    <product>
+     <property>aero/qbar-psf</property>
+     <value> 193.5 </value>
+     <!-- Start CD -->
+     <value> 0.5 </value>
+    </product>
+   </function>
+  </axis>
+
+ </aerodynamics>
+
+</fdm_config>

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<PropertyList>
+
+  <sim>
+    <model>
+      <livery>
+        <name type="string">1895</name>
+        <anchors>Liveries/1895/gray_dark.png</anchors>
+        <barrels>Liveries/1895/gray_dark.png</barrels>
+        <boats>Liveries/1895/boats.png</boats>
+        <breakwater_inside>Liveries/1895/white.png</breakwater_inside>
+        <breakwater_outside>Liveries/1895/crest.png</breakwater_outside>
+        <casemate>Liveries/1895/casemate.png</casemate>
+        <compass_face>Liveries/1895/compass.png</compass_face>
+        <controls>Liveries/1895/controls.png</controls>
+        <deck>Liveries/1895/deck.png</deck>
+        <flag>Liveries/1895/flag1.png</flag>
+        <grate>Liveries/1895/grate.png</grate>
+        <hawse_holes>Liveries/1895/grey.png</hawse_holes>
+        <hull>Liveries/1895/hull.png</hull>
+        <masts>Liveries/1895/buff.png</masts>
+        <pilot_house>Liveries/1895/ph_wood.png</pilot_house>
+        <props>Liveries/1895/brass.png</props>
+        <skylight_round>Liveries/1895/skylight2.png</skylight_round>
+        <skylights>Liveries/1895/skylight.png</skylights>
+        <sponsons>Liveries/1895/sponsons.png</sponsons>
+        <stack>Liveries/1895/stack.png</stack>
+        <throttle_dial_port>Liveries/1895/throttle2.png</throttle_dial_port>
+        <throttle_dial_stbd>Liveries/1895/throttle1.png</throttle_dial_stbd>
+        <throttle_indicator>Liveries/1895/brass.png</throttle_indicator>
+        <turrets>Liveries/1895/plate.png</turrets>
+        <ventilator_inside>Liveries/1895/red.png</ventilator_inside>
+        <ventilator_outside>Liveries/1895/white.png</ventilator_outside>
+        <wheel>Liveries/1895/wheel.png</wheel>
+        <wheel_stern>Liveries/1895/wheel_1.png</wheel_stern>
+        <wheel_stern_stantions>Liveries/1895/white.png</wheel_stern_stantions>
+        <winch_green>Liveries/1895/green.png</winch_green>
+      </livery>
+    </model>
+  </sim>
+
+</PropertyList>
+

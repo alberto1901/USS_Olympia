@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!--
+  U.S.S. Olympia.
+
+  Copyright (C) 2022  Jeffery S. Koppe  (jeff.koppe@gmail.com)
+  This file is licensed under the GPL license version 2 or later.
+-->
+<PropertyList>
+
+<!-- Use Fluttering Flag Model and Effect for commodore's pennant -->
+  <model>
+    <name>Ensign</name>
+    <path>Aircraft/USS_Olympia/Models/Ensign/Ensign.xml</path>
+    <offsets>
+        <pitch-deg>0</pitch-deg>   
+        <heading-deg>0</heading-deg>
+        <x-m> 3.951508 </x-m>
+        <y-m> 0.00000 </y-m>
+        <z-m> 14.807465 </z-m>
+    </offsets>
+  </model>
+  <animation>
+    <type>scale</type>
+    <object-name>Ensign</object-name>
+    <x-offset>0.65</x-offset>
+    <y-offset>0.65</y-offset>
+    <z-offset>0.65</z-offset>
+  </animation>
+
+</PropertyList>

@@ -1,0 +1,126 @@
+<?xml version="1.0"?>
+<!--
+  U.S.S. Olympia.
+
+  Copyright (C) 2022  Jeffery S. Koppe  (jeff.koppe@gmail.com)
+  This file is licensed under the GPL license version 2 or later.
+-->
+<PropertyList>
+
+<!-- Stern flag -->
+<model>
+    <path>flag.ac</path>
+</model>
+
+  <animation>
+    <name>Flag_4-4</name>
+    <object-name>flag1</object-name>
+    <object-name>flag2</object-name>
+    <object-name>flag3</object-name>
+    <object-name>flag4</object-name>
+  </animation>
+
+  <animation>
+    <name>Flag_3-4</name>
+    <object-name>flag2</object-name>
+    <object-name>flag3</object-name>
+    <object-name>flag4</object-name>
+  </animation>
+
+  <animation>
+    <name>Flag_2-4</name>
+    <object-name>flag3</object-name>
+    <object-name>flag4</object-name>
+  </animation>
+
+  <animation>
+    <name>Flag_1-4</name>
+    <object-name>flag4</object-name>
+  </animation>
+
+
+
+<!-- Stern flag reacts to wind gusts -->
+<animation>
+  <type>rotate</type>
+  <object-name>Flag_1-4</object-name>
+  <!-- property>environment/wind-from-heading-deg</property -->
+  <property></property>
+  <factor>1</factor>
+    <center>
+      <x-m> 1.667732  </x-m>
+      <y-m> 0.3.0000  </y-m>
+      <z-m> -2.801662  </z-m>
+    </center>
+    <axis>
+      <x>0</x>
+      <y>0</y>
+      <z>1</z>
+    </axis>
+</animation>
+
+<animation>
+  <type>rotate</type>
+  <object-name>Flag_2-4</object-name>
+  <!-- property>environment/wind-from-heading-deg</property -->
+  <property></property>
+  <factor>1</factor>
+    <center>
+      <x-m> 1.27191 </x-m>
+      <y-m> -0.050 </y-m>
+      <z-m> -2.524935 </z-m>
+    </center>
+    <axis>
+      <x>0</x>
+      <y>0</y>
+      <z>1</z>
+    </axis>
+</animation>
+
+<animation>
+  <type>rotate</type>
+  <object-name>Flag_3-4</object-name>
+  <property></property>
+  <property></property>
+  <factor>1</factor>
+ <!-- axis>   
+   <x1-m> 0.778109</x1-m>
+   <y1-m> 0.084054</y1-m>
+   <z1-m> -0.960606</z1-m>
+   <x2-m> 0.783698</x2-m>
+   <y2-m> 0.070765</y2-m>
+   <z2-m> -3.161916</z2-m>
+  </axis -->
+  <center>
+    <x-m> 0.780904 </x-m>
+    <y-m> 0.000000 </y-m>
+    <z-m> -2.061261 </z-m>
+  </center>
+    <axis>
+      <x>0</x>
+      <y>0</y>
+      <z>1</z>
+    </axis>
+</animation>
+
+<animation>
+  <type>rotate</type>
+  <object-name>Flag_4-4</object-name>
+  <!-- property>environment/wind-from-heading-deg</property -->
+  <property>environment/wind-from-heading-deg</property>
+  <factor>12</factor>
+  <center>
+    <x-m> 0.000986 </x-m>
+    <y-m> 0.001043 </y-m>
+    <z-m> -1.287541 </z-m>
+  </center>
+    <axis>
+      <x>0</x>
+      <y>0</y>
+      <z>1</z>
+    </axis>
+</animation>
+
+
+</PropertyList>
+
