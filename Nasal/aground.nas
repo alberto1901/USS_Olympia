@@ -1,6 +1,6 @@
 #functions for handling running aground by checking the 'solid' property of contacts
 
-print("Loaded aground.nas");
+print("Loaded aground2.nas");
 
 
 var run_aground = func{
@@ -34,7 +34,11 @@ var run_aground = func{
         gui.popupTip("Oh No! I'm aground on the "~warning~"!");
 
         #flood the pointmass with excess weight to prevent the vessel from moving
-        setprop("/fdm/jsbsim/inertia/pointmass-weight-lbs[5]",  500000);
+        setprop("/fdm/jsbsim/inertia/pointmass-weight-lbs[6]",  10000000);
+#        setprop("/fdm/jsbsim/inertia/pointmass-location-x-inches[6]",  1920);
+
+        #kill the throttel
+        controls.incThrottle(-1.00, 0.0);
 
         #increase the friction on the contact points
         for (var i=0; i < 3; i = i+1) {
@@ -47,12 +51,8 @@ var run_aground = func{
 
         #stop checking to see if the vessel is aground. It is!
         timer_run_aground.stop();
-
-        #once grounded, start checking to see if the player hits the 'refoat' key (r)
-        if(!getprop("/sim/model/aground_pitch")) { 
-            timer_settle.start();
-        }
-    }
+        
+    } #end if warning
 }; #end of function
 
 #default to checking for grounding every 1/2 second
@@ -63,51 +63,33 @@ setlistener("sim/signals/fdm-initialized", func {
         timer_run_aground.start();
 });
 
-###########################################################################
-
-#adjust pitch and heel to indicate grounded status
-var settle = func() {
-        turrets.rotate_turret("/sim/model/aground_pitch", 0.05, -5, 5);
-        turrets.rotate_turret("/sim/model/aground_heel", 0.05, -12, 12);
-
-        #stop settling after heeling has reached 12 degrees. Cut the throttle.
-        if(getprop("/sim/model/aground_heel") == 12){
-            timer_settle.stop();
-            controls.incThrottle(-1.00, 0.0);
-        }
-}
-
-#set the interval for settling to 0.02 of a second
-timer_settle = maketimer(0.02, settle);
 
 ###########################################################################
 
 #refloat the vessel
 var refloat = func() {
+
+    #no need to refloat if the vessel isn't aground
+#    if getprop("/fdm/jsbsim/inertia/pointmass-weight-lbs[6]") != 10000000 {
+#        return;
+#    }
+
     gui.popupTip("Refloating");
 
-    #repositions the model to floating status
-    turrets.rotate_turret("/sim/model/aground_pitch", -0.05,0,5);
-    turrets.rotate_turret("/sim/model/aground_heel", -0.05,0,12);
-        
-    #reset the friction, reset the flooded weight, restart the agound checking with a 10 second delay
-    if(getprop("/sim/model/aground_heel") == 0){
+    setprop("/fdm/jsbsim/inertia/pointmass-weight-lbs[6]", 18900);
+#    setprop("/fdm/jsbsim/inertia/pointmass-location-x-inches[6]",  962.5984267);
 
-        timer_refloat.stop();
-
-        setprop("/fdm/jsbsim/inertia/pointmass-weight-lbs[5]", 0);
-
-        for (var i=0; i < 3; i = i+1) {
-            setprop("/fdm/jsbsim/contact/unit["~i~"]/dynamic_friction_coeff", 1);
-            setprop("/fdm/jsbsim/contact/unit["~i~"]/static_friction_coeff", 1);
-            setprop("/fdm/jsbsim/contact/unit["~i~"]/rolling_friction-factor", 0);
-            setprop("/fdm/jsbsim/contact/unit["~i~"]/static_friction-factor", 0);
-            timer_run_aground.restart(10.0);
+    for (var i=0; i < 3; i = i+1) {
+        setprop("/fdm/jsbsim/contact/unit["~i~"]/dynamic_friction_coeff", 1);
+        setprop("/fdm/jsbsim/contact/unit["~i~"]/static_friction_coeff", 1);
+        setprop("/fdm/jsbsim/contact/unit["~i~"]/rolling_friction-factor", 0);
+        setprop("/fdm/jsbsim/contact/unit["~i~"]/static_friction-factor", 0);
         }
-    }
+
+    #start checking for grounding again but give a 10 second delay to allow backing off the ground
+    timer_run_aground.restart(10.0);
 }
 
-timer_refloat = maketimer(0.02, refloat);
 
 
 

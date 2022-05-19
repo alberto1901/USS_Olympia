@@ -146,17 +146,17 @@
 
 <model>
   <name>Pennant</name>
-  <path>Aircraft/USS_Olympia/Models/commodore_pennant.xml</path>
+  <path>Aircraft/USS_Olympia/Models/Ensign/commodore_pennant.xml</path>
 </model>
 
 <model>
   <name>Flags</name>
-  <path>Aircraft/USS_Olympia/Models/flags.xml</path>
+  <path>Aircraft/USS_Olympia/Models/Ensign/flags.xml</path>
   <offsets>
     <x-m> 104.706383 </x-m>
     <y-m> -0.061341 </y-m>
     <z-m>  9.907047 </z-m>
-    <pitch-deg>22</pitch-deg> 
+    <pitch-deg>22</pitch-deg>
   </offsets>
 </model>
 
@@ -165,7 +165,7 @@
 
 <model>
   <name>Lights</name>
-  <path>Aircraft/USS_Olympia/Models/lights.xml</path>
+  <path>Aircraft/USS_Olympia/Models/Lights/lights.xml</path>
 </model>
 
  <!-- Crew Models-->
@@ -175,7 +175,7 @@
     <offsets>
       <x-m>  31.58 </x-m>
       <y-m> -0.308287 </y-m>
-      <z-m>  10.101 </z-m>    
+      <z-m>  10.101 </z-m>
     </offsets>
   </model>
   <model>
@@ -184,7 +184,7 @@
     <offsets>
       <x-m>  31.58 </x-m>
       <y-m>  0.35287 </y-m>
-      <z-m>  10.101 </z-m>    
+      <z-m>  10.101 </z-m>
     </offsets>
   </model>
 
@@ -348,7 +348,7 @@
     <type>spin</type>
     <object-name>prop_stbd_props</object-name>
     <expression>
-      <product>      
+      <product>
         <property>fdm/jsbsim/propulsion/engine/engine-rpm</property>
         <property>fdm/jsbsim/external_reactions/propeller/x</property> <!-- can be set to -1 via key binding 127-Delete to reverse engines -->
       </product>
@@ -369,7 +369,7 @@
     <type>spin</type>
     <object-name>prop_port_props</object-name>
     <expression>
-      <product>      
+      <product>
         <property>fdm/jsbsim/propulsion/engine/engine-rpm</property>
         <property>fdm/jsbsim/external_reactions/propeller/x</property> <!-- can be set to -1 via key binding 127-Delete to reverse engines -->
       </product>
@@ -570,7 +570,7 @@
    <y-m>  0.00 </y-m>
    <z-m>  0.00 </z-m>
   </offsets>
- </model> 
+ </model>
 
 <model>
   <name>Bow Wake Port</name>
@@ -648,7 +648,7 @@
   </offsets>
  </model>
 
- 
+
 
  <!-- Propeller Wake ================================================================-->
 
@@ -706,7 +706,7 @@
  <!-- Water ================================================================-->
  <model>
   <name>Water</name>
-  <path>Aircraft/USS_Olympia/Models/water.xml</path>
+  <path>Aircraft/USS_Olympia/Models/Water/water.xml</path>
   <offsets>
    <!-- x/y/z == back/right/up -->
    <x-m>12.00</x-m>
@@ -714,19 +714,6 @@
    <z-m>0.00</z-m>
   </offsets>
  </model>
-
-
- <!-- Markers for debugging ================================================-->
- <!-- model>
-  <name>Markers</name>
-  <path>Aircraft/USS_Olympia/Models/markers.xml</path>
-  <offsets>
-   <x-m>12.00</x-m>
-   <y-m>0.00</y-m>
-   <z-m>0.00</z-m>
-  </offsets>
- </model -->
-
 
 
  <!-- LOD for the model as a whole -->
