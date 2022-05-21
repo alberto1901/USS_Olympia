@@ -93,11 +93,11 @@
   <desc>Rotate FORE/AFT turret to port.</desc>
  </key>
  <key>
-  <name>k / K</name>
+  <name>g / G</name>
   <desc>Elevate FORE/AFT main guns.</desc>
  </key>
  <key>
-  <name>j / J</name>
+  <name>s / S</name>
   <desc>Lower FORE/AFT main guns.</desc>
  </key>
 
