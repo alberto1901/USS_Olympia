@@ -9,16 +9,16 @@
     it under the terms of the GNU General Public License as published by
     the Free Software Foundation; either version 2 of the License, or
     (at your option) any later version.
-  
+
     This program is distributed in the hope that it will be useful,
     but WITHOUT ANY WARRANTY; without even the implied warranty of
     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
     GNU General Public License for more details.
-  
+
     You should have received a copy of the GNU General Public License
     along with this program; if not, write to the Free Software
     Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
-  
+
 
 
 
@@ -73,8 +73,8 @@ ENGINE DATA
 
  </documentation>
 
- <property>fcs/throttle-cmd-norm</property>
- <property>fcs/mixture-cmd-norm</property>
+  <property>fcs/throttle-cmd-norm</property>
+  <property>fcs/mixture-cmd-norm</property>
 
  <channel name="boilers">
   <!-- Temporary system that just outputs the absolute pressure. -->
@@ -103,7 +103,7 @@ ENGINE DATA
       <tableData>
        0.0    0.0
        1.0  100.0
-      </tableData>     
+      </tableData>
     </table>
    </function>
   </fcs_function -->
@@ -169,7 +169,7 @@ ENGINE DATA
       <tableData>
         0.0    0.0
         1.0    1.0
-      </tableData>     
+      </tableData>
      </table>
     </product>
    </function>
@@ -359,6 +359,7 @@ ENGINE DATA
    </function>
   </fcs_function>
 
+
   <fcs_function name="propulsion/engine/thrust-lbs">
    <function>
     <product>
@@ -366,8 +367,18 @@ ENGINE DATA
      <value>0.000277777</value> <!-- 1/60^2 -->
      <property>propulsion/engine/engine-rpm</property>
      <property>propulsion/engine/engine-rpm</property>
-     <!--value>6561</value-->        <!-- D^4 -->
-     <value>48000</value>  
+     <!--value>6561</value-->        <!-- D^4 Monitor movement-->
+
+     <!-- when propellor thrust is ahead (1),  59000 gives ~21.5 knots ahead;
+          when propellor thrust is astern (-1), 2900 gives ~5 knots astern -->
+     <table>
+       <independentVar lookup="row">external_reactions/propeller/x</independentVar>
+       <tableData>
+          -1  2900
+           1  59000
+       </tableData>
+     </table>
+
      <property>propulsion/engine/thrust-coefficient</property>
     </product>
    </function>
