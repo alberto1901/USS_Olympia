@@ -8,7 +8,7 @@
 -->
 <PropertyList>
 
- <title>U.S.S. Olympia, C-6</title>
+ <title>U.S.S. Olympia</title>
  <!-- Specific keys -->
 
  <key>
@@ -17,7 +17,7 @@
  </key>
  <key>
   <name>r</name>
-  <desc>Refloat ship.</desc>
+  <desc>Refloat ship</desc>
  </key>
 
 
@@ -27,28 +27,39 @@
  </key>
  <key>
   <name>8</name>
-  <desc>Increase engine.</desc>
+  <desc>Increase throttle 10%</desc>
  </key>
  <key>
   <name>2</name>
-  <desc>Decrease engine.</desc>
+  <desc>Decrease throttle 10%</desc>
  </key>
  <key>
   <name>[DEL]</name>
-  <desc>Reverse engines.</desc>
+  <desc>Reverse engines</desc>
  </key>
  <key>
   <name>4</name>
-  <desc>Rudder to port.</desc>
+  <desc>Rudder to port</desc>
  </key>
  <key>
   <name>5</name>
-  <desc>Rudder to center.</desc>
+  <desc>Rudder to center</desc>
  </key>
  <key>
   <name>6</name>
-  <desc>Rudder to port.</desc>
+  <desc>Rudder to port</desc>
  </key>
+
+
+ <key>
+  <name>[PAGE UP]</name>
+  <desc>Increase throttle 1%</desc>
+ </key>
+ <key>
+  <name>[PAGE DOWN]</name>
+  <desc>Decrease throttle 1%</desc>
+ </key>
+
 
 <key>
   <name>......</name>
@@ -56,27 +67,27 @@
  </key>
  <key>
   <name>[UP]</name>
-  <desc>Increase engine.</desc>
+  <desc>Increase throttle 10%</desc>
  </key>
  <key>
   <name>[DOWN]</name>
-  <desc>Decrease engine.</desc>
+  <desc>Decrease throttle 10%</desc>
  </key>
  <key>
   <name>[DEL]</name>
-  <desc>Reverse engines.</desc>
+  <desc>Reverse engines</desc>
  </key>
  <key>
   <name>[LEFT]</name>
-  <desc>Rudder to port.</desc>
+  <desc>Rudder to port</desc>
  </key>
  <key>
   <name>5</name>
-  <desc>Rudder to center.</desc>
+  <desc>Rudder to center</desc>
  </key>
  <key>
   <name>[RIGHT] </name>
-  <desc>Rudder to port.</desc>
+  <desc>Rudder to port</desc>
  </key>
 
 
@@ -86,23 +97,26 @@
  </key>
  <key>
   <name>f / F</name>
-  <desc>Rotate FORE/AFT turret to starboard.</desc>
+  <desc>Rotate FORE/AFT turret to starboard</desc>
  </key>
  <key>
   <name>d / D</name>
-  <desc>Rotate FORE/AFT turret to port.</desc>
+  <desc>Rotate FORE/AFT turret to port</desc>
  </key>
  <key>
   <name>g / G</name>
-  <desc>Elevate FORE/AFT main guns.</desc>
+  <desc>Elevate FORE/AFT main guns</desc>
  </key>
  <key>
   <name>s / S</name>
-  <desc>Lower FORE/AFT main guns.</desc>
+  <desc>Lower FORE/AFT main guns</desc>
  </key>
 
  <!-- Handling instructions. -->
  <text>
-Most standard keys have no effect on a ship.
+Refloating the ship gives you 10 seconds to back away or push over the grounding point. You may need to hold down the 'r' key until you are clear.
+
+For more realistic wave motion set /fdm/jsbsim/hydro/environment/wave-amplitude-ft greater than zero.
+
  </text>
 </PropertyList>

@@ -386,6 +386,30 @@
     </axis>
   </animation>
 
+<!-- ROTATE THROTTLE INDICATORS -->
+ <animation>
+  <type>rotate</type>
+  <object-name>throttle_indicator_port_throttle_indicator</object-name>
+  <object-name>throttle_indicator_stbd_throttle_indicator</object-name>
+    <expression>
+      <product>
+        <property>fdm/jsbsim/fcs/throttle-cmd-norm</property>
+        <property>fdm/jsbsim/external_reactions/propeller/x</property> <!-- can be set to -1 via key binding 127-Delete to reverse engines -->
+        <value>123</value> <!-- max degree of rotation on engine telegraph model in pilot house -->
+      </product>
+    </expression>
+  <center>
+   <x-m> 30.67615 </x-m>
+   <y-m> 0.5636 </y-m>
+   <z-m> 10.753798 </z-m>
+  </center>
+  <axis>
+   <x> 0.0 </x>
+   <y> 1.0 </y>
+   <z> 0.0 </z>
+  </axis>
+ </animation>
+
 
 
 <!-- ROTATE FORE TURRET -->

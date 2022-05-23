@@ -27,8 +27,6 @@ var title = "Instruments";
     var temp = io.read_properties(filename);
     var layers = temp.getValues().layers.layer;
 
-
-
     #create an image child for the texture
     var child=root.createChild("image")
         .setFile( "Aircraft/USS_Olympia/Instruments/compass.png" )
@@ -36,8 +34,7 @@ var title = "Instruments";
     child.setCenter(128,128);
     var compass = child;
 
-
-
+    #show speed
     var groundspeed = root.createChild("text")
       .setText("")
       .set("font", "LiberationFonts/LiberationSans-Bold.ttf")
@@ -48,6 +45,7 @@ var title = "Instruments";
 
 
 
+     #show direction
      var thrust_vector = root.createChild("text")
       .setText("Forward")
       .set("font", "LiberationFonts/LiberationSans-Bold.ttf")
@@ -58,16 +56,35 @@ var title = "Instruments";
 
 
 
-     var engine_rpm = root.createChild("text")
-      .setText("0")
+    #throttle indicator
+    var throttle_label = root.createChild("text")
+      .setText("Throttle\nN     |     |     |     |     |     F")
       .set("font", "LiberationFonts/LiberationSans-Bold.ttf")
       .setFontSize(20, 0.9)          # font size (in texels) and font aspect ratio
       .setColor(0,0,0,1)             # black, fully opaque
       .setAlignment("center-center") # how the text is aligned to where you place it
-      .setTranslation(128, 350);     # where to place the text
+      .setTranslation(128, 330);     # where to place the text
+
+     var throttle_indicator = root.createChild("text")
+      .setText("|")
+      .set("font", "LiberationFonts/LiberationSans-Bold.ttf")
+      .setFontSize(40, 0.9)          # font size (in texels) and font aspect ratio
+      .setColor(0,0,1,0.5)           # green, 50% opaque
+      .setAlignment("center-center") # how the text is aligned to where you place it
+      .setTranslation(0, 350);       # where to place the text
+
+     #engine rpm
+     var engine_rpm = root.createChild("text")
+      .setText("0")
+      .set("font", "LiberationFonts/LiberationSans-Bold.ttf")
+      .setFontSize(15, 0.9)          # font size (in texels) and font aspect ratio
+      .setColor(0,0,1,0.5)           # black, fully opaque
+      .setAlignment("center-center") # how the text is aligned to where you place it
+      .setTranslation(128, 380);     # where to place the text
 
 
 
+     #show rudder
      var rudder_label = root.createChild("text")
       .setText("Rudder\nP     |     |     |     |     |     S")
       .set("font", "LiberationFonts/LiberationSans-Bold.ttf")
@@ -82,10 +99,11 @@ var title = "Instruments";
       .setFontSize(40, 0.9)          # font size (in texels) and font aspect ratio
       .setColor(0,0,1,0.5)           # green, 50% opaque
       .setAlignment("center-center") # how the text is aligned to where you place it
-      .setTranslation(128, 455);     # where to place the text
+      .setTranslation(128, 440);     # where to place the text
 
 
 
+     #show heel angle
      var heel_label = root.createChild("text")
       .setText("Heel Degree\nP     |     |     |     |     |     S")
       .set("font", "LiberationFonts/LiberationSans-Bold.ttf")
@@ -94,25 +112,25 @@ var title = "Instruments";
       .setAlignment("center-center") # how the text is aligned to where you place it
       .setTranslation(128, 500);     # where to place the text
 
-    var heel_indicator = root.createChild("text")
+     var heel_indicator = root.createChild("text")
       .setText("|")
       .set("font", "LiberationFonts/LiberationSans-Bold.ttf")
       .setFontSize(60, 1.5)          # font size (in texels) and font aspect ratio
       .setColor(0,0,1,0.5)           # green 50% opaque
       .setAlignment("center-bottom") # how the text is aligned to where you place it
-      .setTranslation(128, 580);     # where to place the text
+      .setTranslation(128, 560);     # where to place the text
 
      var heel_value = root.createChild("text")
       .setText("")
       .set("font", "LiberationFonts/LiberationSans-Bold.ttf")
       .setFontSize(15, 0.9)          # font size (in texels) and font aspect ratio
-      .setColor(0,0,1,0.5)             # black, fully opaque
+      .setColor(0,0,1,0.5)           # black, fully opaque
       .setAlignment("center-center") # how the text is aligned to where you place it
-      .setTranslation(128, 590);     # where to place the text
+      .setTranslation(128, 570);     # where to place the text
 
 
-
-    var pitch_label = root.createChild("text")
+     #show pitch angle
+     var pitch_label = root.createChild("text")
       .setText("Pitch Degree")
       .set("font", "LiberationFonts/LiberationSans-Bold.ttf")
       .setFontSize(20, 0.9)          # font size (in texels) and font aspect ratio
@@ -120,7 +138,7 @@ var title = "Instruments";
       .setAlignment("center-center") # how the text is aligned to where you place it
       .setTranslation(128, 615);     # where to place the text
 
-    var pitch_indicator = root.createChild("text")
+     var pitch_indicator = root.createChild("text")
       .setText("stn -------- | -------- bow")
       .set("font", "LiberationFonts/LiberationSans-Bold.ttf")
       .setFontSize(20, 0.9)          # font size (in texels) and font aspect ratio
@@ -200,7 +218,6 @@ window.del = func()
 
 ####UPDATE DISPLAYS####
 var update = func(){
-#    print("updating");
 
     #update compass
     var hdg=getprop("/orientation/heading-deg");
@@ -222,26 +239,27 @@ var update = func(){
         thrust_vector.setColor(0,0,0,1);
     }
 
+    #update throttle indicator
+    var throttle_setting = 256 * getprop("fdm/jsbsim/fcs/throttle-cmd-norm");
+    throttle_indicator.setText("|");
+    throttle_indicator.setTranslation(throttle_setting,350);
+
     #update engine_rpm
     engine_rpm.setText(sprintf("Engine RPM: %.2f", getprop("/fdm/jsbsim/propulsion/engine/engine-rpm")));
 
     #update rudder indicator
     var rudder_setting = 128 + 128 * getprop("/fdm/jsbsim/fcs/aileron-cmd-norm");
     rudder_indicator.setText("|");
-    rudder_indicator.setTranslation(rudder_setting,455);
+    rudder_indicator.setTranslation(rudder_setting,440);
 
     #update heel indicator
     var heel_setting = getprop("/fdm/jsbsim/hydro/hull/roll-deg");
     heel_value.setText(sprintf("%.3f", heel_setting));
-#    heel_indicator.setText("|");
     heel_indicator.setRotation(heel_setting*D2R);
 
     #update pitch indicator
     var pitch_setting = getprop("/fdm/jsbsim/hydro/hull/pitch-deg");
     pitch_value.setText(sprintf("%.3f", pitch_setting));
-    #pitch_indicator.setText("|");
     pitch_indicator.setRotation(-pitch_setting*D2R);
-
-
 
 } #end of update function
