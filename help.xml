@@ -116,7 +116,5 @@
  <text>
 Refloating the ship gives you 10 seconds to back away or push over the grounding point. You may need to hold down the 'r' key until you are clear.
 
-For more realistic wave motion set /fdm/jsbsim/hydro/environment/wave-amplitude-ft greater than zero.
-
  </text>
 </PropertyList>

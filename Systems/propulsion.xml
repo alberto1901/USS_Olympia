@@ -1,6 +1,5 @@
 <?xml version="1.0"?>
 <!--
-
   U.S.S. Olympia "flight" model for JSBSim.
 
     Copyright (C) 2012 - 2015  Anders Gidenstam  (anders(at)gidenstam.org)
@@ -18,31 +17,10 @@
     You should have received a copy of the GNU General Public License
     along with this program; if not, write to the Free Software
     Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
-
-
-
-
 -->
 <system name="propulsion">
 
  <documentation>
-
-MONITOR:
-   Known:
-     Propeller ([Peterkin:1985:DRM], drawing no. 131, page 343)
-       Diameter 9 ft, pitch 16 ft, diameter of hub 18 in.
-     Boilers
-       40 psi.        ([Miller:1974:PC], page 110)
-     Engine
-       2 cylinder vibrating lever half trunk engine.
-       Back-to-back cylinders 40 in diameter, 22 in stroke.
-       Diameter of propeller shaft 9 in.
-       ([Miller:1974:PC], page 109)
-       Power 400 hp. ([Miller:1974:PC], page 145)
-       Trunk diameter 13(?) in.
-       The cut-off could probably be changed at run-time for a
-       power - economy trade-off.
-
 
 OLYMPIA:
 SOURCE: Historic American Engineering Record (U.S.S.OLYMPIA
@@ -94,7 +72,6 @@ ENGINE DATA
  </channel>
 
  <channel name="no engine model">
-
   <!-- Temporary system that just sets the engine RPM. -->
   <!-- fcs_function name="propulsion/engine/engine-rpm">
    <function>
@@ -107,7 +84,6 @@ ENGINE DATA
     </table>
    </function>
   </fcs_function -->
-
  </channel>
 
  <channel name="simple steam engine model">
@@ -370,11 +346,11 @@ ENGINE DATA
      <!--value>6561</value-->        <!-- D^4 Monitor movement-->
 
      <!-- when propellor thrust is ahead (1),  59000 gives ~21.5 knots ahead;
-          when propellor thrust is astern (-1), 2900 gives ~5 knots astern -->
+          when propellor thrust is astern (-1), 4500 gives ~8 knots astern -->
      <table>
        <independentVar lookup="row">external_reactions/propeller/x</independentVar>
        <tableData>
-          -1  2900
+          -1  4500
            1  59000
        </tableData>
      </table>

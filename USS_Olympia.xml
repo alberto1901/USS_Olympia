@@ -1,24 +1,26 @@
 <?xml version="1.0"?>
 <!--
 
-  U.S.S. Olympia "flight" model for JSBSim.
+  U.S.S. Monitor "flight" model for JSBSim.
+  Copyright (C) 2012 - 2018  Anders Gidenstam  (anders(at)gidenstam.org)
 
-    Copyright (C) 2012 - 2018  Anders Gidenstam  (anders(at)gidenstam.org)
+  Modified for U.S.S. Olympia by Jeffery S. Koppe
+  Copyright (C) 2022  Jeffery S. Koppe  (jeff.koppe(at)gmail.com)
 
-    This program is free software; you can redistribute it and/or modify
-    it under the terms of the GNU General Public License as published by
-    the Free Software Foundation; either version 2 of the License, or
-    (at your option) any later version.
-  
-    This program is distributed in the hope that it will be useful,
-    but WITHOUT ANY WARRANTY; without even the implied warranty of
-    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-    GNU General Public License for more details.
-  
-    You should have received a copy of the GNU General Public License
-    along with this program; if not, write to the Free Software
-    Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
-  
+  This program is free software; you can redistribute it and/or modify
+  it under the terms of the GNU General Public License as published by
+  the Free Software Foundation; either version 2 of the License, or
+  (at your option) any later version.
+
+  This program is distributed in the hope that it will be useful,
+  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  GNU General Public License for more details.
+
+  You should have received a copy of the GNU General Public License
+  along with this program; if not, write to the Free Software
+  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+
 -->
 <?xml-stylesheet type="text/xsl" href="http://jsbsim.sourceforge.net/JSBSim.xsl"?>
 <fdm_config name="USS_Olympia" version="2.0" release="ALPHA"
@@ -26,11 +28,11 @@
    xsi:noNamespaceSchemaLocation="http://jsbsim.sourceforge.net/JSBSim.xsd">
 
  <fileheader>
-  <author>Anders Gidenstam</author>
-  <email>anders at gidenstam dot org</email>
+  <author>Jeffery S. Koppe</author>
+  <email>jeff.koppe (at) gmail.com</email>
 
   <filecreationdate>2012-07-14</filecreationdate>
-  <version>2018-11-19</version>
+  <version>2022-04-15</version>
 
   <description>Models the U.S.S. Olympia.</description>
 
@@ -39,34 +41,47 @@
    <licenseURL>http://www.gnu.org/licenses/gpl.html</licenseURL>
   </license>
   <note>
-   This model was created using publicly available data, publicly available
-   technical reports, textbooks, and guesses. It contains no proprietary or
-   restricted data. It has been validated only to the extent that it may seem
-   to "fly right", and possibly to comply to published, publicly known, 
-   performance data (maximum speed, endurance, etc.).
-
    This model is distributed in the hope that it will be useful,
    but WITHOUT ANY WARRANTY; without even the implied warranty of
    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
    GNU General Public License for more details.
+
+   This model was created using publicly available data, publicly available
+   technical reports, textbooks, and guesses. It contains no proprietary or
+   restricted data. It has been validated only to the extent that it may seem
+   to "fly right", and possibly to comply to published, publicly known,
+   performance data (maximum speed, endurance, etc.).
+
+  US LIBRARY OF CONGRESS INFORMATION:
+  https://loc.gov/pictures/item/pa3529/
+
+  Title: USS Olympia, Penn's Landing, 211 South Columbus Boulevard, Philadelphia, Philadelphia County, PA
+  Other Title: Cruiser USS Olympia
+  Creator(s): Historic American Engineering Record, creator
+  Related Names:
+     Spanish-American War
+     Dewey, George
+  Date Created/Published: Documentation compiled after 1968
+  Medium: Photo(s): 87
+  Data Page(s): 118
+  Photo Caption Page(s): 13
+  Reproduction Number: ---
+  Rights Advisory: No known restrictions on images made by the U.S. Government; images copied from other sources may be restricted. (http://www.loc.gov/  rr/print/res/114_habs.html)
+  Call Number: HAER PA,51-PHILA,714-
+  Repository: Library of Congress Prints and Photographs Division Washington, D.C. 20540 USA http://hdl.loc.gov/loc.pnp/pp.print
+  Notes:
+
+    Significance: USS Olympia is a partially armored or protected cruiser which was constructed as part of a congressional program to build a new steel U.S. Navy prior to the turn of the century. Her innovative design incorporated modern, high speed engines and armor shielding the magazines and propulsion machinery. She is the oldest extant steel-hulled warship in the world. The USS Olympia was the flagship of Admiral George Dewey's victorious task force at the battle of Manila Bay on May 1, 1898...
+    Survey number: HAER PA-428
+    Building/structure dates: 1895 Initial Construction
+    Building/structure dates: 1898
+    National Register of Historic Places NRIS Number: 66000692
   </note>
 
-  <reference refID="Miller:1974:PC"
-             author="Edward M. Miller (ed.)"
-             title="Project Cheesebox - A journey into history"
-             date="1974"/>
-  <reference refID="Peterkin:1985:DRM"
-             author="Ernest W. Peterkin"
-             title="Drawings of the U.S.S. Olympia"
-             date="1985"/>
-  <reference refID="Ripper:1909:HE"
-             author="William Ripper"
-             title="Heat Engines"
-             date="1909"/>
-  <reference refID="Ripper:1922:SE"
-             author="William Ripper"
-             title="Steam-Engine  Theory and Practice"
-             date="1922"/>
+  <reference refID="HAER No. PA-428"
+             author="Robert C. Stewart (Historian)"
+             title="Cruiser USS Olympia: Historic American Engineering Record"
+             date="1996"/>
 
  </fileheader>
 
@@ -102,8 +117,7 @@
 
  <mass_balance>
   <documentation>
-   Information from ([Miller:1974:PC], pp.169, Letter by J. Ericsson 1861-09-15)
-     Speed: Immersed section 312 ft^2, engine 400 hp, est. speed >=9 knots.
+   Information from
 
      Displacement: Total 2811200 lbs. With 18 in freeboard 2222080 lbs.
 
@@ -278,7 +292,7 @@
     <z>0.0</z>
    </location>
    <static_friction_coeff> 1000000 </static_friction_coeff>
-   <dynamic_friction_coeff> 1000000 </dynamic_friction_coeff>   
+   <dynamic_friction_coeff> 1000000 </dynamic_friction_coeff>
    <spring_coeff unit="LBS/FT">      200000.00 </spring_coeff>
    <damping_coeff unit="LBS/FT/SEC"> 150000.00 </damping_coeff>
   </contact>
@@ -294,7 +308,7 @@
     <z>0.0</z>
    </location>
    <static_friction_coeff> 1000000 </static_friction_coeff>
-   <dynamic_friction_coeff> 1000000 </dynamic_friction_coeff>   
+   <dynamic_friction_coeff> 1000000 </dynamic_friction_coeff>
    <spring_coeff unit="LBS/FT">      200000.00 </spring_coeff>
    <damping_coeff unit="LBS/FT/SEC"> 150000.00 </damping_coeff>
   </contact>
@@ -310,7 +324,7 @@
     <z>0.0</z>
    </location>
    <static_friction_coeff> 1000000 </static_friction_coeff>
-   <dynamic_friction_coeff> 1000000 </dynamic_friction_coeff>   
+   <dynamic_friction_coeff> 1000000 </dynamic_friction_coeff>
    <spring_coeff unit="LBS/FT">      200000.00 </spring_coeff>
    <damping_coeff unit="LBS/FT/SEC"> 150000.00 </damping_coeff>
   </contact>
@@ -326,7 +340,7 @@
     <z>0.0</z>
    </location>
    <static_friction_coeff> 1000000 </static_friction_coeff>
-   <dynamic_friction_coeff> 1000000 </dynamic_friction_coeff>   
+   <dynamic_friction_coeff> 1000000 </dynamic_friction_coeff>
    <spring_coeff unit="LBS/FT">      200000.00 </spring_coeff>
    <damping_coeff unit="LBS/FT/SEC"> 150000.00 </damping_coeff>
   </contact>

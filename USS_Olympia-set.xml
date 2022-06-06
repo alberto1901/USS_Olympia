@@ -1,9 +1,14 @@
 <?xml version="1.0"?>
 <!--
-  U.S.S. Olympia.
+  U.S.S. Monitor.
 
-  Copyright (C) 2008 - 2022  Jeffery S. Koppe  (jeff.koppe(at)gmail.com)
+  Copyright (C) 2012 - 2017  Anders Gidenstam  (anders(at)gidenstam.org)
   This file is licensed under the GPL license version 2 or later.
+
+  U.S.S. Olympia
+  Modified for USS Olympia by Jeffery S. Koppe
+  Copyright (C) 2022 Jeffery S. Koppe (jeff.koppe(at)gmail.com)
+
 -->
 <PropertyList>
 
@@ -14,7 +19,7 @@
   <aircraft-version>2022-03-27</aircraft-version>
 
   <long-description>
-USS Olympia was an armored cruiser commissioned by the United States in 1895. Built in San Francisco, California, she became the flagship of Commodore Dewey's US Far East Squadron. When the Spanish-American War erupted in 1898, Dewey descended upon the unprepared Spanish fleet in Manila, Philipines, and won a stunning surprise victory defined by his famous words to his flag-captain, "You may fire when you are ready, Gridley." Gridely fired and Dewey became a hero of the war and his flagship an icon of the United States emerging as a world power.
+USS Olympia was an armored cruiser commissioned by the United States in 1895. Built in San Francisco, California, she became the flagship of Commodore Dewey's US Far East Squadron. When the Spanish-American War erupted in 1898, Dewey descended upon the unprepared Spanish fleet in Manila, Philipines, and won a stunning surprise victory defined by his famous words to his flag-captain, "You may fire when you are ready, Gridley." Gridley fired and Dewey became a hero of the war and his flagship an icon of the United States emerging as a world power.
 
 Olympia's last duty was transporting the first American Unknown Soldier from Europe to Washington, DC, in 1922.
 
@@ -251,6 +256,10 @@ The Olympia has been preserved as one of the very few pre-Dreadnaughts existing 
 
  <nasal>
 
+  <USS_Olympia>
+   <file>Aircraft/USS_Olympia/Systems/USS_Olympia.nas</file>
+  </USS_Olympia>
+
   <turrets>
     <file>Aircraft/USS_Olympia/Nasal/turrets.nas</file>
   </turrets>
@@ -262,6 +271,11 @@ The Olympia has been preserved as one of the very few pre-Dreadnaughts existing 
   <panel>
     <file>Aircraft/USS_Olympia/Nasal/panel.nas</file>
   </panel>
+
+  <captain>
+    <file>Aircraft/USS_Olympia/Nasal/gridley.nas</file>
+  </captain>
+
 
   <!-- statistics>
     <file>Aircraft/USS_Olympia/Nasal/statistics.nas</file>
@@ -451,6 +465,55 @@ The Olympia has been preserved as one of the very few pre-Dreadnaughts existing 
         </script>
       </binding>
    </key>
+
+  <key n="106"> <!-- Raise Binoculars [SPACE] -->
+      <name>j</name>
+      <desc>Raise Binoculars</desc>
+      <repeatable type="bool">true</repeatable>
+       <binding>
+        <command>nasal</command>
+        <script>
+          turrets.rotate_turret("sim/model/binocular_pitch", 1, -10, 40);
+        </script>
+      </binding>
+   </key>
+  <key n="74"> <!-- Lower Binoculars [SPACE] -->
+      <name>J</name>
+      <desc>Lower Binoculars</desc>
+      <repeatable type="bool">true</repeatable>
+       <binding>
+        <command>nasal</command>
+        <script>
+          turrets.rotate_turret("sim/model/binocular_pitch", -1, -0, 40);
+        </script>
+      </binding>
+   </key>
+
+  <key n="107"> <!-- Raise Binoculars [SPACE] -->
+      <name>k</name>
+      <desc>Look Right</desc>
+      <repeatable type="bool">true</repeatable>
+       <binding>
+        <command>nasal</command>
+        <script>
+          turrets.rotate_turret("sim/model/torso_yaw", 1, -45, 45);
+        </script>
+      </binding>
+   </key>
+  <key n="75"> <!-- Lower Binoculars [SPACE] -->
+      <name>K</name>
+      <desc>Look Left</desc>
+      <repeatable type="bool">true</repeatable>
+       <binding>
+        <command>nasal</command>
+        <script>
+          turrets.rotate_turret("sim/model/torso_yaw", -1, -45, 45);
+        </script>
+      </binding>
+   </key>
+
+
+
 
   </keyboard>
  </input>

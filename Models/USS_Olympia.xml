@@ -188,6 +188,17 @@
     </offsets>
   </model>
 
+  <model>
+    <name>Gridley</name>
+    <path>Aircraft/USS_Olympia/Models/Crew/Gridley/gridley.xml</path>
+    <offsets>
+      <x-m> 32.0 </x-m>
+      <y-m> -1.0 </y-m>
+      <z-m> 10.101 </z-m>
+    </offsets>
+  </model>
+
+
 
 <animation>
     <name>ship</name>
@@ -386,7 +397,7 @@
     </axis>
   </animation>
 
-<!-- ROTATE THROTTLE INDICATORS -->
+<!-- ROTATE THROTTLE INDICATORS (ENGINE TELEGRAPHS) -->
  <animation>
   <type>rotate</type>
   <object-name>throttle_indicator_port_throttle_indicator</object-name>
@@ -493,41 +504,6 @@
   </axis>
  </animation>
 
-
- <animation>
-  <type>rotate</type>
-  <object-name>ship</object-name>
-  <property>sim/model/aground_pitch</property>
-  <factor>1</factor>
-  <offset-deg>0.0</offset-deg>
-  <center>
-   <x-m> 0.0 </x-m>
-   <y-m> 0.0 </y-m>
-   <z-m> 0.0 </z-m>
-  </center>
-  <axis>
-   <x> 0.0 </x>
-   <y> 1.0 </y>
-   <z> 0.0 </z>
-  </axis>
- </animation>
- <animation>
-  <type>rotate</type>
-  <object-name>ship</object-name>
-  <property>sim/model/aground_heel</property>
-  <factor>1</factor>
-  <offset-deg>0.0</offset-deg>
-  <center>
-   <x-m> 0.0 </x-m>
-   <y-m> 0.0 </y-m>
-   <z-m> 0.0 </z-m>
-  </center>
-  <axis>
-   <x> 1.0 </x>
-   <y> 0.0 </y>
-   <z> 0.0 </z>
-  </axis>
- </animation>
 
 
 
@@ -686,7 +662,6 @@
     <value>12.0</value>
    </greater-than>
   </condition>
-
     <shooter>
      <phi-min-deg> 0.0</phi-min-deg>
      <phi-max-deg> 100.0</phi-max-deg>
@@ -698,7 +673,7 @@
    <!-- x/y/z == back/right/up -->
    <x-m> 101.534 </x-m>
    <y-m> 0.00 </y-m>
-   <z-m> 1.20 </z-m>
+   <z-m> 0.80 </z-m>
   </offsets>
  </model>
 
@@ -723,7 +698,7 @@
    <!-- x/y/z == back/right/up -->
    <x-m> 101.534 </x-m>
    <y-m> 0.00 </y-m>
-   <z-m> 1.20 </z-m>
+   <z-m> 0.80 </z-m>
   </offsets>
  </model>
 

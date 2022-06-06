@@ -6,7 +6,7 @@
   This file is licensed under the GPL license version 2 or later.
 -->
 <PropertyList>
- <name>Aircraft/MTB_20m/Models/Effects/water</name>
+ <name>Aircraft/USS_Olympia/Models/Effects/water</name>
  <inherits-from>Effects/model-default</inherits-from>
  <parameters>
   <wave-time-sec><use>environment/waves/time-sec</use></wave-time-sec>
@@ -23,8 +23,8 @@
   </predicate>
   <pass n="0">
    <program n="0">
-    <vertex-shader n="0">Aircraft/MTB_20m/Models/Effects/water-lightfield.vert</vertex-shader>
-    <vertex-shader n="1">Aircraft/MTB_20m/Models/Effects/water-geometry.vert</vertex-shader>
+    <vertex-shader n="0">Aircraft/USS_Olympia/Models/Effects/water-lightfield.vert</vertex-shader>
+    <vertex-shader n="1">Aircraft/USS_Olympia/Models/Effects/water-geometry.vert</vertex-shader>
    </program>
    <uniform n="8">
     <name>wave_time_sec</name>
@@ -61,7 +61,7 @@
   </predicate>
   <pass n="0">
    <program n="0">
-    <vertex-shader n="1">Aircraft/MTB_20m/Models/Effects/water-lightfield.vert</vertex-shader>
+    <vertex-shader n="1">Aircraft/USS_Olympia/Models/Effects/water-lightfield.vert</vertex-shader>
    </program>
    <uniform n="1">
     <name>wave_time_sec</name>

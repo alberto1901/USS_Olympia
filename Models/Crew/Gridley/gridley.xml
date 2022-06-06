@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<PropertyList>
+
+  <path>gridley.ac</path>
+
+  <!-- SCAN HORIZON -->
+  <animation>
+    <type>rotate</type>
+    <object-name>gridley_hand_right_hands</object-name>
+    <object-name>gridley_hand_left_hands</object-name>
+    <object-name>gridley_upper_arm_right_arms</object-name>
+    <object-name>gridley_upper_arm_left_arms</object-name>
+    <object-name>gridley_forearm_right_arms</object-name>
+    <object-name>gridley_forearm_left_arms</object-name>
+    <object-name>gridley_binoculars_hat</object-name>
+    <object-name>gridley_hat_hat</object-name>
+    <object-name>gridley_head_head</object-name>
+    <object-name>gridley_chest_torso</object-name>
+    <object-name>gridley_torso_torso</object-name>
+    <property>sim/model/torso_yaw</property>
+    <center>
+      <x-m> 0.175178 </x-m>
+      <y-m> -0.00415 </y-m>
+      <z-m> 1.418588 </z-m>
+    </center>
+    <axis>
+      <x> 0.0 </x>
+      <y> 0.0 </y>
+      <z> 1.0 </z>
+    </axis>
+  </animation>
+
+
+  <!-- RAISE BINOCULARS -->
+  <animation>
+    <type>rotate</type>
+    <object-name>gridley_hand_right_hands</object-name>
+    <object-name>gridley_hand_left_hands</object-name>
+    <object-name>gridley_upper_arm_right_arms</object-name>
+    <object-name>gridley_upper_arm_left_arms</object-name>
+    <object-name>gridley_forearm_right_arms</object-name>
+    <object-name>gridley_forearm_left_arms</object-name>
+    <object-name>gridley_binoculars_hat</object-name>
+    <property>sim/model/binocular_pitch</property>
+    <factor>0.95</factor>
+    <center>
+      <x-m> 0.150447 </x-m>
+      <y-m> 0.170434 </y-m>
+      <z-m> 1.363429 </z-m>
+    </center>
+    <axis>
+      <x> 0.0 </x>
+      <y> 1.0 </y>
+      <z> 0.0 </z>
+    </axis>
+  </animation>
+  <!-- ROTATE FOREARMS BRINGING BINOCS TO FACE-->
+  <animation>
+    <type>rotate</type>
+    <object-name>gridley_hand_right_hands</object-name>
+    <object-name>gridley_hand_left_hands</object-name>
+    <object-name>gridley_forearm_right_arms</object-name>
+    <object-name>gridley_forearm_left_arms</object-name>
+    <object-name>gridley_binoculars_hat</object-name>
+    <property>sim/model/binocular_pitch</property>
+    <factor>0.95</factor>
+    <center>
+      <x-m> 0.018197 </x-m>
+      <y-m> 0.206922 </y-m>
+      <z-m> 1.103264 </z-m>
+    </center>
+    <axis>
+      <x> 0.0 </x>
+      <y> 1.0 </y>
+      <z> 0.0 </z>
+    </axis>
+  </animation>
+
+  <!-- ROTATE BINOCS TO ALIGN WITH EYES -->
+  <animation>
+    <type>rotate</type>
+    <object-name>gridley_binoculars_hat</object-name>
+    <property>sim/model/binocular_pitch</property>
+    <factor>0.7</factor>
+    <center>
+      <x-m> -0.266315 </x-m>
+      <y-m> 0.081625 </y-m>
+      <z-m> 1.218044 </z-m>
+    </center>
+    <axis>
+      <x> 0.0 </x>
+      <y> -1.0 </y>
+      <z> 0.0 </z>
+    </axis>
+  </animation>
+
+</PropertyList>
