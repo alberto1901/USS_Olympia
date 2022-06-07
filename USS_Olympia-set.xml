@@ -1,8 +1,8 @@
 <?xml version="1.0"?>
 <!--
-  U.S.S. Monitor.
+  U.S.S. Olympia.
 
-  Copyright (C) 2012 - 2017  Anders Gidenstam  (anders(at)gidenstam.org)
+  Copyright (C) 2012 - 2017, 2022  Anders Gidenstam  (anders(at)gidenstam.org)
   This file is licensed under the GPL license version 2 or later.
 
   U.S.S. Olympia
@@ -16,7 +16,7 @@
 
   <description>U.S.S. Olympia.</description>
   <author>Jeffery S. Koppe</author>
-  <aircraft-version>2022-03-27</aircraft-version>
+  <aircraft-version>2022-06-07</aircraft-version>
 
   <long-description>
 USS Olympia was an armored cruiser commissioned by the United States in 1895. Built in San Francisco, California, she became the flagship of Commodore Dewey's US Far East Squadron. When the Spanish-American War erupted in 1898, Dewey descended upon the unprepared Spanish fleet in Manila, Philipines, and won a stunning surprise victory defined by his famous words to his flag-captain, "You may fire when you are ready, Gridley." Gridley fired and Dewey became a hero of the war and his flagship an icon of the United States emerging as a world power.
@@ -281,7 +281,59 @@ The Olympia has been preserved as one of the very few pre-Dreadnaughts existing 
     <file>Aircraft/USS_Olympia/Nasal/statistics.nas</file>
   </statistics -->
 
+  <OSD>
+    <script>
+###############################################################################
+# On-screen displays
+var left  = screen.display.new(20, 10);
+var right = screen.display.new(-300, 10);
 
+left.add("/fdm/jsbsim/sim-time-sec");
+left.add("/orientation/heading-magnetic-deg");
+left.add("/fdm/jsbsim/hydro/beta-deg");
+left.add("/fdm/jsbsim/hydro/pitch-deg");
+left.add("/fdm/jsbsim/hydro/roll-deg");
+left.add("/fdm/jsbsim/hydro/height-agl-ft");
+left.add("/fdm/jsbsim/inertia/cg-x-in");
+left.add("/fdm/jsbsim/inertia/cg-z-in");
+left.add("/fdm/jsbsim/fcs/rudder-pos-norm");
+#left.add("/fdm/jsbsim/hydro/qbar-u-psf");
+#left.add("/fdm/jsbsim/hydro/qbar-v-psf");
+#left.add("/fdm/jsbsim/hydro/fbx-lbs");
+#left.add("/fdm/jsbsim/hydro/fby-lbs");
+left.add("/fdm/jsbsim/hydro/fdrag-lbs");
+left.add("/fdm/jsbsim/hydro/fbz-lbs");
+left.add("/fdm/jsbsim/hydro/X/force-lbs");
+left.add("/fdm/jsbsim/hydro/Y/force-lbs");
+left.add("/fdm/jsbsim/hydro/yaw-moment-lbsft");
+left.add("/fdm/jsbsim/hydro/pitch-moment-lbsft");
+left.add("/fdm/jsbsim/hydro/roll-moment-lbsft");
+#left.add("/fdm/jsbsim/");
+#left.add("/fdm/jsbsim/");
+
+right.add("/fdm/jsbsim/hydro/v-kt");
+right.add("/fdm/jsbsim/hydro/vbx-fps");
+right.add("/fdm/jsbsim/hydro/vby-fps");
+right.add("/fdm/jsbsim/propulsion/boiler/steam-absolute-pressure-psi");
+right.add("/fdm/jsbsim/propulsion/engine[0]/steam-mean-pressure-psi");
+right.add("/fdm/jsbsim/propulsion/engine[0]/power-available-hp");
+right.add("/fdm/jsbsim/propulsion/engine[0]/power-required-hp");
+right.add("/fdm/jsbsim/propulsion/engine[0]/engine-rpm");
+right.add("/fdm/jsbsim/propulsion/engine[0]/advance-ratio");
+right.add("/fdm/jsbsim/propulsion/engine[0]/thrust-lbs");
+right.add("/fdm/jsbsim/propulsion/engine[0]/shaft-position-norm");
+right.add("/fdm/jsbsim/propulsion/engine[1]/steam-mean-pressure-psi");
+right.add("/fdm/jsbsim/propulsion/engine[1]/power-available-hp");
+right.add("/fdm/jsbsim/propulsion/engine[1]/power-required-hp");
+right.add("/fdm/jsbsim/propulsion/engine[1]/engine-rpm");
+right.add("/fdm/jsbsim/propulsion/engine[1]/advance-ratio");
+right.add("/fdm/jsbsim/propulsion/engine[1]/thrust-lbs");
+right.add("/fdm/jsbsim/propulsion/engine[1]/shaft-position-norm");
+#right.add("/fdm/jsbsim/");
+
+###############################################################################
+    </script>
+  </OSD>
  </nasal>
 
 
@@ -521,8 +573,10 @@ The Olympia has been preserved as one of the very few pre-Dreadnaughts existing 
  <fdm>
   <jsbsim>
    <fcs>
-    <throttle-cmd-norm alias="/controls/engines/engine/throttle"/>
-    <mixture-cmd-norm  alias="/controls/engines/engine/mixture"/>
+    <throttle-cmd-norm alias="/controls/engines/engine[0]/throttle"/>
+    <throttle-cmd-norm alias="/controls/engines/engine[1]/throttle"/>
+    <mixture-cmd-norm  alias="/controls/engines/engine[0]/mixture"/>
+    <mixture-cmd-norm  alias="/controls/engines/engine[1]/mixture"/>
    </fcs>
   </jsbsim>
  </fdm>

@@ -1,25 +1,26 @@
 <?xml version="1.0"?>
 <!--
 
-  U.S.S. Monitor "flight" model for JSBSim.
-  Copyright (C) 2012 - 2018  Anders Gidenstam  (anders(at)gidenstam.org)
+  U.S.S. Olympia "flight" model for JSBSim.
 
-  Modified for U.S.S. Olympia by Jeffery S. Koppe
-  Copyright (C) 2022  Jeffery S. Koppe  (jeff.koppe(at)gmail.com)
+    Copyright (C) 2012 - 2018, 2022  Anders Gidenstam  (anders(at)gidenstam.org)
 
-  This program is free software; you can redistribute it and/or modify
-  it under the terms of the GNU General Public License as published by
-  the Free Software Foundation; either version 2 of the License, or
-  (at your option) any later version.
+    Modified for U.S.S. Olympia by Jeffery S. Koppe
+    Copyright (C) 2022  Jeffery S. Koppe  (jeff.koppe(at)gmail.com)
 
-  This program is distributed in the hope that it will be useful,
-  but WITHOUT ANY WARRANTY; without even the implied warranty of
-  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-  GNU General Public License for more details.
+    This program is free software; you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation; either version 2 of the License, or
+    (at your option) any later version.
 
-  You should have received a copy of the GNU General Public License
-  along with this program; if not, write to the Free Software
-  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with this program; if not, write to the Free Software
+    Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 
 -->
 <?xml-stylesheet type="text/xsl" href="http://jsbsim.sourceforge.net/JSBSim.xsl"?>
@@ -28,11 +29,13 @@
    xsi:noNamespaceSchemaLocation="http://jsbsim.sourceforge.net/JSBSim.xsd">
 
  <fileheader>
+  <author>Anders Gidenstam</author>
+  <email>anders at gidenstam dot org</email>
   <author>Jeffery S. Koppe</author>
   <email>jeff.koppe (at) gmail.com</email>
 
-  <filecreationdate>2012-07-14</filecreationdate>
-  <version>2022-04-15</version>
+  <filecreationdate>2022-04-15</filecreationdate>
+  <version>2022-06-07</version>
 
   <description>Models the U.S.S. Olympia.</description>
 
@@ -51,43 +54,26 @@
    restricted data. It has been validated only to the extent that it may seem
    to "fly right", and possibly to comply to published, publicly known,
    performance data (maximum speed, endurance, etc.).
-
-  US LIBRARY OF CONGRESS INFORMATION:
-  https://loc.gov/pictures/item/pa3529/
-
-  Title: USS Olympia, Penn's Landing, 211 South Columbus Boulevard, Philadelphia, Philadelphia County, PA
-  Other Title: Cruiser USS Olympia
-  Creator(s): Historic American Engineering Record, creator
-  Related Names:
-     Spanish-American War
-     Dewey, George
-  Date Created/Published: Documentation compiled after 1968
-  Medium: Photo(s): 87
-  Data Page(s): 118
-  Photo Caption Page(s): 13
-  Reproduction Number: ---
-  Rights Advisory: No known restrictions on images made by the U.S. Government; images copied from other sources may be restricted. (http://www.loc.gov/  rr/print/res/114_habs.html)
-  Call Number: HAER PA,51-PHILA,714-
-  Repository: Library of Congress Prints and Photographs Division Washington, D.C. 20540 USA http://hdl.loc.gov/loc.pnp/pp.print
-  Notes:
-
-    Significance: USS Olympia is a partially armored or protected cruiser which was constructed as part of a congressional program to build a new steel U.S. Navy prior to the turn of the century. Her innovative design incorporated modern, high speed engines and armor shielding the magazines and propulsion machinery. She is the oldest extant steel-hulled warship in the world. The USS Olympia was the flagship of Admiral George Dewey's victorious task force at the battle of Manila Bay on May 1, 1898...
-    Survey number: HAER PA-428
-    Building/structure dates: 1895 Initial Construction
-    Building/structure dates: 1898
-    National Register of Historic Places NRIS Number: 66000692
   </note>
 
-  <reference refID="HAER No. PA-428"
+  <reference refID="HAER:1996:USSOlympia"
              author="Robert C. Stewart (Historian)"
              title="Cruiser USS Olympia: Historic American Engineering Record"
-             date="1996"/>
+             date=">1996"/>
+  <reference refID="Ripper:1909:HE"
+             author="William Ripper"
+             title="Heat Engines"
+             date="1909"/>
+  <reference refID="Ripper:1922:SE"
+             author="William Ripper"
+             title="Steam-Engine  Theory and Practice"
+             date="1922"/>
 
  </fileheader>
 
  <documentation>
-  The origin of the structural frame is at the bow of the ship 3.0 m above
-  the hull datum line (at the bottom of the keel).
+  The origin of the structural frame is at the bow of the ship and near the
+  water line.
  </documentation>
 
  <metrics>
@@ -98,17 +84,17 @@
   <htailarm unit="FT">        12.2147  </htailarm>
   <vtailarea unit="FT2">     319.0423  </vtailarea>
   <vtailarm unit="FT">        17.2533  </vtailarm>
-   <location name="AERORP" unit="M">
+   <location name="AERORP" unit="M"> <!-- FIXME: update these -->
      <x> 25.45 </x>
      <y>  0.00 </y>
      <z>  0.00 </z>
    </location>
-   <location name="EYEPOINT" unit="M">
+   <location name="EYEPOINT" unit="M"> <!-- FIXME: update these -->
      <x> 7.64 </x>
      <y> 1.58 </y>
      <z> 0.00 </z>
    </location>
-   <location name="VRP" unit="M">
+   <location name="VRP" unit="M"> <!-- FIXME: update these -->
      <x> 0.00 </x>
      <y> 0.00 </y>
      <z>-3.00 </z>
@@ -117,24 +103,12 @@
 
  <mass_balance>
   <documentation>
-   Information from
-
-     Displacement: Total 2811200 lbs. With 18 in freeboard 2222080 lbs.
-
-     Total weight of iron in vessel and turret: somewhat above 940800 lbs.
-
-   Information from ([Miller:1974:PC], pp.145, Letter by J. Ericsson 1861-10-?)
-     Displacement: Total 2881364 lbs.
-     Launching draft: 6 ft 11 in (upper vessel immersed 5 in).
-                      Displacement: 1172111 lbs.
-     Weight of turret about 200000 lbs (to be added).
-
-   Information from ([Peterkin:1985:DRM], drawing no. 154):
-     Shear lines on commissioning:
-     "The diagram indicates that the stern was 13 in above the water line,
-     making the bow 32 in above the water line and the average freeboard
-     amidships 22 1/2 in, 4 1/2 in above the design water line."
-
+   Information from ([HAER:1968:USSOlympia])
+     Lenght:       344.0 feet
+     Beam:          53.0 feet
+     Draught:       21.5 feet
+     Displacement: Total 5872 tons at a draught of 21 feet 6.8 in.
+     Speed:         21.5 kt at full power
   </documentation>
   <documentation>
     Rough model to estimate CG and inertia tensor.
@@ -143,53 +117,34 @@
     % Ixx = \bar{Ixx} + m sqrt(\bar{y}^2 + \bar{z}^2)
     % Ixy = \bar{Ixy} + m \bar{x} \bar{y}
 
-    % The hull is a uniform 52.73x12.60x3.00 meter box.
-    % CG in the middle (i.e. at (25.45, 0, -1)) m.
-    m_hull = 0.45359237 * (1172111 - 40000) % KG
-    a = 52.73    % m
-    b = 12.60    % m
-    c = 3.0      % m
+    % The hull is a uniform 105x17x8 meter box.
+    % CG in the middle (i.e. at (52.50, 0, -2)) m.
+    m_hull = 5166227 % KG
+    a = 105.0    % m
+    b =  17.0    % m
+    c =   8.0    % m
 
     Ixx_hull = 1/12 * m_hull * (b^2 + c^2)
     Iyy_hull = 1/12 * m_hull * (a^2 + c^2)
     Izz_hull = 1/12 * m_hull * (a^2 + b^2)
     Ixy_hull = Ixz_hull = Iyz_hull = 0
 
-    % The turret is a cylindrical shell with a diameter of 21ft and a
-    % height of 9 ft weighing 200000 lbs with CG at (25.45, 0, 2)m in the
-    % structural frame.
-    m_turret = 0.45359237 * 200000 % KG
-    h = 0.3048 * 9 % m
-    r = 0.3048 * 10.5 % m
-    Ixx_turret = 1/2 * m_turret * r^2 + 1/12 * m_turret * h^2 + \
-                 m_turret * sqrt(0^2 + 3^2)
-    Iyy_turret = Ixx_turret
-    Izz_turret = m_turret * r^2
-    Ixy_turret = Ixz_turret = Iyz_turret = 0
-
-
-    Ixx = Ixx_hull + Ixx_turret
-    Iyy = Iyy_hull + Iyy_turret
-    Izz = Izz_hull + Izz_turret
-    Ixy = Ixy_hull + Ixy_turret
-    Ixz = Ixz_hull + Ixz_turret
-    Iyz = Iyz_hull + Iyz_turret
-
   </documentation>
-  <ixx unit="KG*M2"> 7.9726e+06 </ixx>
-  <iyy unit="KG*M2"> 1.2016e+08 </iyy>
-  <izz unit="KG*M2"> 1.2671e+08 </izz>
-  <emptywt unit="LBS" > 1332111 </emptywt>
+  <ixx unit="KG*M2"> 1.5e+8 </ixx>
+  <iyy unit="KG*M2"> 4.8e+9 </iyy>
+  <izz unit="KG*M2"> 4.9e+9 </izz>
+  <emptywt unit="KG" > 5166227 </emptywt> <!-- 800000 kg off-loaded. -->
   <location name="CG" unit="M">
-   <x> 25.45 </x>
+   <x> 52.50 </x>
    <y>  0.00 </y>
-   <z> -1.00 </z>
+   <z> -2.00 </z>
   </location>
 
   <documentation>
    Adjustable payload pointmasses.
   </documentation>
 
+  <!--
   <pointmass name="Port coal bunker">
    <weight unit="LBS"> 25000.0 </weight>
    <location unit="M">
@@ -206,8 +161,10 @@
     <z> -2.00 </z>
    </location>
   </pointmass>
+  -->
 
-  <!-- A total of 2500 gallons according to the contract. [Miller:1974:PC] -->
+  <!-- A total of X gallons. -->
+  <!--
   <pointmass name="Water in the port boiler">
    <weight unit="LBS"> 20000.0 </weight>
    <location unit="M">
@@ -242,11 +199,9 @@
     <z> -2.50 </z>
    </location>
   </pointmass>
-
+  -->
   <!-- Movable weights. -->
-  <!-- The 9in Dahlgren guns weighed about 15700lbs each.
-       ([Peterkin:1985:DRM], p.500) -->
-  <!-- Gun carriage: about 3200lbs (NOAA) -->
+  <!--
   <pointmass name="IX in. Dahlgren gun w. carriage">
    <weight unit="LBS"> 18900.0 </weight>
    <location unit="M">
@@ -263,8 +218,10 @@
     <z>  1.650 </z>
    </location>
   </pointmass>
+  -->
 
   <!-- Fixed weights. -->
+  <!--
   <pointmass name="Steam engine">
    <weight unit="LBS">40000.0</weight>
    <location unit="M">
@@ -273,7 +230,7 @@
     <z> -1.00 </z>
    </location>
   </pointmass>
-
+  -->
  </mass_balance>
 
  <ground_reactions>
@@ -289,7 +246,7 @@
     <!-- OLYMPIA MOST FORWARD POINT -->
     <x>0.0</x>
     <y>0.020542</y>
-    <z>0.0</z>
+    <z>10.0</z>
    </location>
    <static_friction_coeff> 1000000 </static_friction_coeff>
    <dynamic_friction_coeff> 1000000 </dynamic_friction_coeff>
@@ -305,7 +262,7 @@
     <!-- OLYMPIA MOST AFT POINT -->
     <x>105.534983</x>
     <y>0.0</y>
-    <z>0.0</z>
+    <z>10.0</z>
    </location>
    <static_friction_coeff> 1000000 </static_friction_coeff>
    <dynamic_friction_coeff> 1000000 </dynamic_friction_coeff>
@@ -321,7 +278,7 @@
     <!-- OLYMPIA MOST PORT POINT -->
     <x>52.021846</x>
     <y>7.86046</y>
-    <z>0.0</z>
+    <z>10.0</z>
    </location>
    <static_friction_coeff> 1000000 </static_friction_coeff>
    <dynamic_friction_coeff> 1000000 </dynamic_friction_coeff>
@@ -337,7 +294,7 @@
     <!-- OLYMPIA MOST STBD POINT -->
     <x>52.021846</x>
     <y>-7.86046</y>
-    <z>0.0</z>
+    <z>10.0</z>
    </location>
    <static_friction_coeff> 1000000 </static_friction_coeff>
    <dynamic_friction_coeff> 1000000 </dynamic_friction_coeff>
@@ -358,7 +315,7 @@
 
   <force name="hydro-X" frame="LOCAL" unit="LBS">
    <location unit="M">
-    <x>  25.50 </x>
+    <x>  52.50 </x>
     <y>   0.00 </y>
     <z>   0.00 </z>
    </location>
@@ -370,7 +327,7 @@
   </force>
   <force name="hydro-Y" frame="LOCAL" unit="LBS">
    <location unit="M">
-    <x>  25.50 </x>
+    <x>  52.50 </x>
     <y>   0.00 </y>
     <z>   0.00 </z>
    </location>
@@ -382,7 +339,7 @@
   </force>
   <force name="hydro-Z" frame="LOCAL" unit="LBS">
    <location unit="M">
-    <x>  25.50 </x>
+    <x>  52.50 </x>
     <y>   0.00 </y>
     <z>   0.00 </z>
    </location>
@@ -415,11 +372,23 @@
    </direction>
   </moment>
 
-  <force name="propeller" frame="BODY" unit="LBS">
+  <force name="propeller[0]" frame="BODY" unit="LBS">
    <location unit="M">
-    <x>  45.00 </x>
-    <y>   0.00 </y>
-    <z>  -1.80 </z>
+    <x> 101.00 </x>
+    <y>  -3.00 </y>
+    <z>  -4.00 </z>
+   </location>
+   <direction>
+    <x> 1.0 </x>
+    <y> 0.0 </y>
+    <z> 0.0 </z>
+   </direction>
+  </force>
+  <force name="propeller[1]" frame="BODY" unit="LBS">
+   <location unit="M">
+    <x> 101.00 </x>
+    <y>   3.00 </y>
+    <z>  -4.00 </z>
    </location>
    <direction>
     <x> 1.0 </x>
