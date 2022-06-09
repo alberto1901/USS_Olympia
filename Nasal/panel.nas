@@ -27,7 +27,7 @@ var title = "Instruments";
     var temp = io.read_properties(filename);
     var layers = temp.getValues().layers.layer;
 
-    #create an image child for the texture
+    #create an image for the texture
     var child=root.createChild("image")
         .setFile( "Aircraft/USS_Olympia/Instruments/compass.png" )
         .setScale(1);
@@ -45,42 +45,56 @@ var title = "Instruments";
 
 
 
-     #show direction
-     var thrust_vector = root.createChild("text")
-      .setText("Forward")
-      .set("font", "LiberationFonts/LiberationSans-Bold.ttf")
-      .setFontSize(20, 0.9)          # font size (in texels) and font aspect ratio
-      .setColor(0,0,0,1)             # black, fully opaque
-      .setAlignment("center-center") # how the text is aligned to where you place it
-      .setTranslation(128, 300);     # where to place the text
+    #create an image for the texture
+    var psi_gauge_0 = root.createChild("image")
+        .setFile( "Aircraft/USS_Olympia/Instruments/psi_gauge.png" )
+        .setScale(.6)
+        .setTranslation(135,270);
 
-
-
-    #throttle indicator
-    var throttle_label = root.createChild("text")
-      .setText("Throttle\nN     |     |     |     |     |     F")
-      .set("font", "LiberationFonts/LiberationSans-Bold.ttf")
-      .setFontSize(20, 0.9)          # font size (in texels) and font aspect ratio
-      .setColor(0,0,0,1)             # black, fully opaque
-      .setAlignment("center-center") # how the text is aligned to where you place it
-      .setTranslation(128, 330);     # where to place the text
-
-     var throttle_indicator = root.createChild("text")
+     var throttle_0_indicator = root.createChild("text")
       .setText("|")
       .set("font", "LiberationFonts/LiberationSans-Bold.ttf")
-      .setFontSize(40, 0.9)          # font size (in texels) and font aspect ratio
-      .setColor(0,0,1,0.5)           # green, 50% opaque
-      .setAlignment("center-center") # how the text is aligned to where you place it
-      .setTranslation(0, 350);       # where to place the text
+      .setFontSize(50)          # font size (in texels) and font aspect ratio
+      .setColor(0,0,0,0.5)           # black, 50% opaque
+      .setAlignment("center-bottom") # how the text is aligned to where you place it
+      .setTranslation(192, 330)       # where to place the text
+      .setRotation(-90*D2R);
 
-     #engine rpm
-     var engine_rpm = root.createChild("text")
-      .setText("0")
+     #engine_0_rpm
+     var engine_0_rpm = root.createChild("text")
+      .setText("Stbd Engine\nrpm: 0")
       .set("font", "LiberationFonts/LiberationSans-Bold.ttf")
       .setFontSize(15, 0.9)          # font size (in texels) and font aspect ratio
-      .setColor(0,0,1,0.5)           # black, fully opaque
+      .setColor(0,0,0,1)             # black, fully opaque
       .setAlignment("center-center") # how the text is aligned to where you place it
-      .setTranslation(128, 380);     # where to place the text
+      .setTranslation(192, 360);     # where to place the text
+
+
+    #create an image for the texture
+    var psi_gauge_1 = root.createChild("image")
+        .setFile( "Aircraft/USS_Olympia/Instruments/psi_gauge.png" )
+        .setScale(.6)
+        .setTranslation(4,270);
+
+     var throttle_1_indicator = root.createChild("text")
+      .setText("|")
+      .set("font", "LiberationFonts/LiberationSans-Bold.ttf")
+      .setFontSize(50)          # font size (in texels) and font aspect ratio
+      .setColor(0,0,0,0.5)           # black, 50% opaque
+      .setAlignment("center-bottom") # how the text is aligned to where you place it
+      .setTranslation(64, 330)      # where to place the text
+      .setRotation(-90*D2R);
+
+     #engine_1_rpm
+     var engine_1_rpm = root.createChild("text")
+      .setText("Port Engine\nrpm: 0")
+      .set("font", "LiberationFonts/LiberationSans-Bold.ttf")
+      .setFontSize(15, 0.9)          # font size (in texels) and font aspect ratio
+      .setColor(0,0,0,1)             # black, fully opaque
+      .setAlignment("center-center") # how the text is aligned to where you place it
+      .setTranslation(64, 360);      # where to place the text
+
+
 
 
 
@@ -155,6 +169,19 @@ var title = "Instruments";
       .setTranslation(128, 665);     # where to place the text
 
 
+     #create an image for the texture
+     var floatgear_logo = root.createChild("image")
+        .setFile( "Aircraft/USS_Olympia/Instruments/FloatGear_logo.png" )
+        .setScale(.4)
+        .setTranslation(90,1100);
+
+      var floatgear_text = root.createChild("text")
+      .setText("FloatGear")
+      .set("font", "LiberationFonts/LiberationSans-Bold.ttf")
+      .setFontSize(24, 0.9)          # font size (in texels) and font aspect ratio
+      .setColor(0,0,1,1)           # blue, fully opaque
+      .setAlignment("center-center") # how the text is aligned to where you place it
+      .setTranslation(128, 1190);     # where to place the text
 
     #adding a timer for updating the displays
     print("Making and starting the panel timer");
@@ -226,26 +253,53 @@ var update = func(){
     #update groundspeed
     groundspeed.setText(sprintf("|\n\n%.2f\nkts", getprop("/velocities/groundspeed-kt")));
 
-    #update thrust_vector
-    var direction = "Ahead";
-    if(getprop("fdm/jsbsim/external_reactions/propeller/x") < 0){
-        direction = "Astern";
-    }
-    thrust_vector.setText("Engine: " ~ direction);
-    if(direction == "Astern"){
-        thrust_vector.setColor(1,0,0,1);  #make red!
+#    #update thrust_vector
+#    var direction = "Ahead";
+#    if(getprop("fdm/jsbsim/external_reactions/propeller/x") < 0){
+#        direction = "Astern";
+#    }
+#    thrust_vector.setText("Engine: " ~ direction);
+#    if(direction == "Astern"){
+#        thrust_vector.setColor(1,0,0,1);  #make red!
+#    }
+#    else {
+#        thrust_vector.setColor(0,0,0,1);
+#    }
+
+#    #update throttle indicator
+#    var throttle_setting = 256 * getprop("fdm/jsbsim/fcs/throttle-cmd-norm");
+#    throttle_indicator.setText("|");
+#    throttle_indicator.setTranslation(throttle_setting,350);
+
+    #update engine_0_rpm
+    engine_0_rpm.setText(sprintf("Stbd Engine\nrpm: %.2f", getprop("fdm/jsbsim/propulsion/engine[0]/engine-rpm")));
+
+    if(getprop("fdm/jsbsim/external_reactions/propeller[0]/x") < 0){
+        engine_0_rpm.setColor(1,0,0,1);
     }
     else {
-        thrust_vector.setColor(0,0,0,1);
+        engine_0_rpm.setColor(0,0,0,1);
     }
 
-    #update throttle indicator
-    var throttle_setting = 256 * getprop("fdm/jsbsim/fcs/throttle-cmd-norm");
-    throttle_indicator.setText("|");
-    throttle_indicator.setTranslation(throttle_setting,350);
+    #update stbd throttle indicator
+    var pressure_0 = getprop("/fdm/jsbsim/propulsion/engine[0]/steam-mean-pressure-psi");
+    throttle_0_indicator.setRotation((pressure_0 - 90) * D2R);
 
-    #update engine_rpm
-    engine_rpm.setText(sprintf("Engine RPM: %.2f", getprop("/fdm/jsbsim/propulsion/engine/engine-rpm")));
+
+    #update engine_1_rpm
+    engine_1_rpm.setText(sprintf("Port Engine\nrpm: %.2f", getprop("fdm/jsbsim/propulsion/engine[1]/engine-rpm")));
+
+    if(getprop("fdm/jsbsim/external_reactions/propeller[1]/x") < 0){
+        engine_1_rpm.setColor(1,0,0,1);
+    }
+    else {
+        engine_1_rpm.setColor(0,0,0,1);
+    }
+
+    #update throttle 1 indicator
+    var pressure_1 = getprop("/fdm/jsbsim/propulsion/engine[1]/steam-mean-pressure-psi");
+    throttle_1_indicator.setRotation((pressure_1 - 90)*D2R);
+
 
     #update rudder indicator
     var rudder_setting = 128 + 128 * getprop("/fdm/jsbsim/fcs/aileron-cmd-norm");

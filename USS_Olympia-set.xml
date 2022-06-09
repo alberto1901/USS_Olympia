@@ -282,7 +282,7 @@ The Olympia has been preserved as one of the very few pre-Dreadnaughts existing 
   </statistics -->
 
   <OSD>
-    <script>
+    <!-- script>
 ###############################################################################
 # On-screen displays
 var left  = screen.display.new(20, 10);
@@ -332,7 +332,7 @@ right.add("/fdm/jsbsim/propulsion/engine[1]/shaft-position-norm");
 #right.add("/fdm/jsbsim/");
 
 ###############################################################################
-    </script>
+    </script -->
   </OSD>
  </nasal>
 
@@ -363,10 +363,18 @@ right.add("/fdm/jsbsim/propulsion/engine[1]/shaft-position-norm");
       <desc>Toggles Propeller Axis to Reverse Thrust</desc>
       <binding>
         <command>property-cycle</command>
-        <property>fdm/jsbsim/external_reactions/propeller/x</property>
+        <property>fdm/jsbsim/external_reactions/propeller[0]/x</property>
         <value>-1</value>
         <value>1</value>
       </binding>
+      <mod-shift>
+      <binding>
+        <command>property-cycle</command>
+        <property>fdm/jsbsim/external_reactions/propeller[1]/x</property>
+        <value>-1</value>
+        <value>1</value>
+      </binding>
+      </mod-shift>
    </key>
 
   <key n="357">
@@ -518,7 +526,7 @@ right.add("/fdm/jsbsim/propulsion/engine[1]/shaft-position-norm");
       </binding>
    </key>
 
-  <key n="106"> <!-- Raise Binoculars [SPACE] -->
+  <key n="106"> <!-- Raise Binoculars -->
       <name>j</name>
       <desc>Raise Binoculars</desc>
       <repeatable type="bool">true</repeatable>
@@ -529,7 +537,7 @@ right.add("/fdm/jsbsim/propulsion/engine[1]/shaft-position-norm");
         </script>
       </binding>
    </key>
-  <key n="74"> <!-- Lower Binoculars [SPACE] -->
+  <key n="74"> <!-- Lower Binoculars -->
       <name>J</name>
       <desc>Lower Binoculars</desc>
       <repeatable type="bool">true</repeatable>
@@ -541,7 +549,7 @@ right.add("/fdm/jsbsim/propulsion/engine[1]/shaft-position-norm");
       </binding>
    </key>
 
-  <key n="107"> <!-- Raise Binoculars [SPACE] -->
+  <key n="107"> <!-- Raise Binoculars -->
       <name>k</name>
       <desc>Look Right</desc>
       <repeatable type="bool">true</repeatable>
@@ -552,7 +560,7 @@ right.add("/fdm/jsbsim/propulsion/engine[1]/shaft-position-norm");
         </script>
       </binding>
    </key>
-  <key n="75"> <!-- Lower Binoculars [SPACE] -->
+  <key n="75"> <!-- Lower Binoculars -->
       <name>K</name>
       <desc>Look Left</desc>
       <repeatable type="bool">true</repeatable>

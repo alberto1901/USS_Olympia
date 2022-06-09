@@ -375,7 +375,7 @@
   <force name="propeller[0]" frame="BODY" unit="LBS">
    <location unit="M">
     <x> 101.00 </x>
-    <y>  -3.00 </y>
+    <y>   3.00 </y>
     <z>  -4.00 </z>
    </location>
    <direction>
@@ -387,7 +387,7 @@
   <force name="propeller[1]" frame="BODY" unit="LBS">
    <location unit="M">
     <x> 101.00 </x>
-    <y>   3.00 </y>
+    <y>  -3.00 </y>
     <z>  -4.00 </z>
    </location>
    <direction>

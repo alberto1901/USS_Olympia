@@ -23,7 +23,7 @@
 
 <key>
   <name>......</name>
-  <desc>   NUMERIC   ... ......</desc>
+  <desc>              ......</desc>
  </key>
  <key>
   <name>8</name>
@@ -35,7 +35,11 @@
  </key>
  <key>
   <name>[DEL]</name>
-  <desc>Reverse engines</desc>
+  <desc>Reverse starboard engine</desc>
+ </key>
+ <key>
+  <name>[SHIFT][DEL]</name>
+  <desc>Reverse port engine</desc>
  </key>
  <key>
   <name>4</name>

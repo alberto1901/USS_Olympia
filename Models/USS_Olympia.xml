@@ -193,7 +193,7 @@
     <path>Aircraft/USS_Olympia/Models/Crew/Gridley/gridley.xml</path>
     <offsets>
       <x-m> 32.0 </x-m>
-      <y-m> -1.0 </y-m>
+      <y-m> 1.0 </y-m>
       <z-m> 10.101 </z-m>
     </offsets>
   </model>
@@ -360,8 +360,8 @@
     <object-name>prop_stbd_props</object-name>
     <expression>
       <product>
-        <property>fdm/jsbsim/propulsion/engine/engine-rpm</property>
-        <property>fdm/jsbsim/external_reactions/propeller/x</property> <!-- can be set to -1 via key binding 127-Delete to reverse engines -->
+        <property>fdm/jsbsim/propulsion/engine[0]/engine-rpm</property>
+        <property>fdm/jsbsim/external_reactions/propeller[0]/x</property> <!-- can be set to -1 via key binding 127-Delete to reverse engines -->
       </product>
     </expression>
     <center>
@@ -381,8 +381,8 @@
     <object-name>prop_port_props</object-name>
     <expression>
       <product>
-        <property>fdm/jsbsim/propulsion/engine/engine-rpm</property>
-        <property>fdm/jsbsim/external_reactions/propeller/x</property> <!-- can be set to -1 via key binding 127-Delete to reverse engines -->
+        <property>fdm/jsbsim/propulsion/engine[1]/engine-rpm</property>
+        <property>fdm/jsbsim/external_reactions/propeller[1]/x</property> <!-- can be set to -1 via key binding Shift-127-Delete to reverse engines -->
       </product>
     </expression>
     <center>
@@ -400,12 +400,14 @@
 <!-- ROTATE THROTTLE INDICATORS (ENGINE TELEGRAPHS) -->
  <animation>
   <type>rotate</type>
-  <object-name>throttle_indicator_port_throttle_indicator</object-name>
   <object-name>throttle_indicator_stbd_throttle_indicator</object-name>
     <expression>
       <product>
-        <property>fdm/jsbsim/fcs/throttle-cmd-norm</property>
-        <property>fdm/jsbsim/external_reactions/propeller/x</property> <!-- can be set to -1 via key binding 127-Delete to reverse engines -->
+        <div>
+          <property>fdm/jsbsim/propulsion/engine[0]/steam-mean-pressure-psi</property>
+          <value>168</value>
+        </div>
+        <property>fdm/jsbsim/external_reactions/propeller[0]/x</property> <!-- can be set to -1 via key binding 127-Delete to reverse engines -->
         <value>123</value> <!-- max degree of rotation on engine telegraph model in pilot house -->
       </product>
     </expression>
@@ -420,6 +422,32 @@
    <z> 0.0 </z>
   </axis>
  </animation>
+
+ <animation>
+  <type>rotate</type>
+  <object-name>throttle_indicator_port_throttle_indicator</object-name>
+    <expression>
+      <product>
+        <div>
+          <property>fdm/jsbsim/propulsion/engine[1]/steam-mean-pressure-psi</property>
+          <value>168</value>
+        </div>
+        <property>fdm/jsbsim/external_reactions/propeller[1]/x</property> <!-- can be set to -1 via key binding 127-Delete to reverse engines -->
+        <value>123</value> <!-- max degree of rotation on engine telegraph model in pilot house -->
+      </product>
+    </expression>
+  <center>
+   <x-m> 30.67615 </x-m>
+   <y-m> 0.5636 </y-m>
+   <z-m> 10.753798 </z-m>
+  </center>
+  <axis>
+   <x> 0.0 </x>
+   <y> 1.0 </y>
+   <z> 0.0 </z>
+  </axis>
+ </animation>
+
 
 
 
@@ -515,7 +543,7 @@
  <condition>
    <greater-than>
 <!--  <property>fdm/jsbsim/hydro/vbx-fps</property> -->
-    <property>fdm/jsbsim/propulsion/engine/steam-mean-pressure-psi</property>
+    <property>fdm/jsbsim/propulsion/engine[1]/steam-mean-pressure-psi</property>
     <value>15.0</value>
    </greater-than>
   </condition>
@@ -533,7 +561,7 @@
  <condition>
    <greater-than>
     <!-- <property>fdm/jsbsim/hydro/vbx-fps</property> -->
-    <property>fdm/jsbsim/propulsion/engine/steam-mean-pressure-psi</property>
+    <property>fdm/jsbsim/propulsion/engine[0]/steam-mean-pressure-psi</property>
     <value>6.0</value>
    </greater-than>
   </condition>
@@ -566,9 +594,9 @@
   <path>Aircraft/USS_Olympia/Models/Effects/splash.xml</path>
   <offsets>
    <!-- x/y/z == back/right/up -->
-   <x-m>  -0.10 </x-m>
+   <x-m>  0.00 </x-m>
    <y-m>  0.00 </y-m>
-   <z-m>  0.00 </z-m>
+   <z-m>  0.80 </z-m>
   </offsets>
  </model>
 
@@ -583,8 +611,8 @@
    </greater-than>
   </condition>
     <shooter>
-     <phi-min-deg>-45.0</phi-min-deg>
-     <phi-max-deg>-50.0</phi-max-deg>
+     <phi-min-deg>-50.0</phi-min-deg>
+     <phi-max-deg>-55.0</phi-max-deg>
     </shooter>
    </particlesystem>
   </overlay>
@@ -593,7 +621,7 @@
    <!-- x/y/z == back/right/up -->
    <x-m>  0.00 </x-m>
    <y-m>  0.00 </y-m>
-   <z-m>  0.00 </z-m>
+   <z-m>  0.70 </z-m>
   </offsets>
  </model>
 
@@ -617,9 +645,9 @@
   <path>Aircraft/USS_Olympia/Models/Effects/splash.xml</path>
   <offsets>
    <!-- x/y/z == back/right/up -->
-   <x-m> -0.10 </x-m>
+   <x-m> 0.00 </x-m>
    <y-m> 0.00 </y-m>
-   <z-m> 0.00 </z-m>
+   <z-m> 0.80 </z-m>
   </offsets>
  </model>
 
@@ -634,8 +662,8 @@
        </greater-than>
      </condition>
     <shooter>
-     <phi-min-deg>45.0</phi-min-deg>
-     <phi-max-deg>50.0</phi-max-deg>
+     <phi-min-deg>50.0</phi-min-deg>
+     <phi-max-deg>55.0</phi-max-deg>
     </shooter>
    </particlesystem>
   </overlay>
@@ -644,7 +672,7 @@
    <!-- x/y/z == back/right/up -->
    <x-m> 0.00 </x-m>
    <y-m> 0.00 </y-m>
-   <z-m> 0.00 </z-m>
+   <z-m> 0.70 </z-m>
   </offsets>
  </model>
 
