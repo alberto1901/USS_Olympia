@@ -44,6 +44,17 @@ var title = "Instruments";
       .setTranslation(128, 100);     # where to place the text
 
 
+   #create an image for the texture
+    var anchor = root.createChild("image")
+        .setFile( "Aircraft/USS_Olympia/Instruments/anchor.png" )
+        .setScale(.6)
+        .setTranslation(116,270);
+
+   #create an image for the texture
+    var ground = root.createChild("image")
+        .setFile( "Aircraft/USS_Olympia/Instruments/ground.png" )
+        .setScale(.6)
+        .setTranslation(116,270);
 
     #create an image for the texture
     var psi_gauge_0 = root.createChild("image")
@@ -253,24 +264,6 @@ var update = func(){
     #update groundspeed
     groundspeed.setText(sprintf("|\n\n%.2f\nkts", getprop("/velocities/groundspeed-kt")));
 
-#    #update thrust_vector
-#    var direction = "Ahead";
-#    if(getprop("fdm/jsbsim/external_reactions/propeller/x") < 0){
-#        direction = "Astern";
-#    }
-#    thrust_vector.setText("Engine: " ~ direction);
-#    if(direction == "Astern"){
-#        thrust_vector.setColor(1,0,0,1);  #make red!
-#    }
-#    else {
-#        thrust_vector.setColor(0,0,0,1);
-#    }
-
-#    #update throttle indicator
-#    var throttle_setting = 256 * getprop("fdm/jsbsim/fcs/throttle-cmd-norm");
-#    throttle_indicator.setText("|");
-#    throttle_indicator.setTranslation(throttle_setting,350);
-
     #update engine_0_rpm
     engine_0_rpm.setText(sprintf("Stbd Engine\nrpm: %.2f", getprop("fdm/jsbsim/propulsion/engine[0]/engine-rpm")));
 
@@ -284,6 +277,14 @@ var update = func(){
     #update stbd throttle indicator
     var pressure_0 = getprop("/fdm/jsbsim/propulsion/engine[0]/steam-mean-pressure-psi");
     throttle_0_indicator.setRotation((pressure_0 - 90) * D2R);
+
+    #if engine[0] is not currently selected, set gauge to 50% transparent
+    if(!getprop("/sim/input/selected/engine[0]")){
+      psi_gauge_0.set("fill", "rgba(255,255,255,0.5)");
+    }
+    else {
+      psi_gauge_0.set("fill", "rgba(255,255,255,1.0)");
+    }
 
 
     #update engine_1_rpm
@@ -299,6 +300,30 @@ var update = func(){
     #update throttle 1 indicator
     var pressure_1 = getprop("/fdm/jsbsim/propulsion/engine[1]/steam-mean-pressure-psi");
     throttle_1_indicator.setRotation((pressure_1 - 90)*D2R);
+
+    #if engine[1] is not currently selected, set gauge to 50% transparent
+    if(!getprop("/sim/input/selected/engine[1]")){
+      psi_gauge_1.set("fill", "rgba(255,255,255,0.5)");
+    }
+    else {
+      psi_gauge_1.set("fill", "rgba(255,255,255,1.0)");
+    }
+
+    #update anchor indicator
+    if(getprop("/position/anchored")){
+        anchor.set("fill", "rgba(255,255,255,1.0)");
+    }
+    else {
+        anchor.set("fill", "rgba(255,255,255,0.0)");
+    }
+
+    #update ground indicator
+    if(getprop("/position/grounded")){
+        ground.set("fill", "rgba(255,255,255,1.0)");
+    }
+    else {
+        ground.set("fill", "rgba(255,255,255,0.0)");
+    }
 
 
     #update rudder indicator

@@ -32,13 +32,13 @@ var run_aground = func{
     #Yes, we have a grounded vessel!
     if(warning != ""){
         gui.popupTip("Oh No! I'm aground on the "~warning~"!");
+        setprop("/position/grounded", "true");
 
+        setprop("/fdm/jsbsim/forces/hold-down", "true");
         interpolate("/orientation/roll-deg", 10, 3);
         interpolate("/orientation/pitch-deg", 5, 3);
 
-        setprop("/fdm/jsbsim/forces/hold-down", "true");
-
-        #kill the throttel
+        #kill the throttle
         controls.incThrottle(-1.00, 0.0);
 
         #stop checking to see if the vessel is aground. It is!
@@ -64,9 +64,26 @@ var refloat = func() {
     gui.popupTip("Refloating");
 
     setprop("/fdm/jsbsim/forces/hold-down", "false");
-    interpolate("/orientation/roll-deg", 0, 3);
-    interpolate("/orientation/pitch-deg", 0, 3);
+    setprop("/position/grounded", "false");
 
     #start checking for grounding again but give a 10 second delay to allow backing off the ground
     timer_run_aground.restart(10.0);
+}
+
+###########################################################################
+
+#anchor the vessel
+var weigh_anchor = func() {
+
+      gui.popupTip("Raising Anchor");
+      interpolate("/fdm/jsbsim/hydro/drag-tweak-factor", 1, 10);
+      setprop("/position/anchored", "false");
+
+}
+
+var drop_anchor = func() {
+
+      gui.popupTip("Dropping Anchor");
+      interpolate("/fdm/jsbsim/hydro/drag-tweak-factor", 1000, 10);
+      setprop("/position/anchored", "true");
 }

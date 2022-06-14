@@ -1,5 +1,5 @@
 AC3Db
-MATERIAL "water" rgb 1 1 1 amb 1 1 1 emis 0 0 0 spec 0.1 0.1 0.1 shi 64 trans 0.50
+MATERIAL "water" rgb 1 1 1 amb 1 1 1 emis 0 0 0 spec 0.1 0.1 0.1 shi 64 trans 0.5
 OBJECT world
 kids 1
 OBJECT poly
@@ -7,7 +7,7 @@ name "Water"
 data 5
 water
 texture "water.png"
-texrep 10 10
+texrep 1 1
 crease 30.000000
 numvert 10202
 204.999969 0.024022 244.975983

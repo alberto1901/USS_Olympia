@@ -12,13 +12,20 @@
  <!-- Specific keys -->
 
  <key>
-  <name>h</name>
+  <name>P</name>
   <desc>Toggle instrument panel</desc>
  </key>
+
  <key>
   <name>r</name>
   <desc>Refloat ship</desc>
  </key>
+
+ <key>
+  <name>b/B</name>
+  <desc>Drop/Weigh anchor</desc>
+ </key>
+
 
 
 <key>

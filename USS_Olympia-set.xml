@@ -28,10 +28,9 @@ The Olympia has been preserved as one of the very few pre-Dreadnaughts existing 
 
   <tags>
    <tag>seacraft</tag>
-   <!-- tag>steam-engine</tag -->
-   <tag>single-engine</tag>
-   <!-- tag>1860s</tag -->
-   <!-- tag>civilwar</tag -->
+   <tag>steam-engine</tag>
+   <tag>twin-engine</tag>
+   <tag>1890s</tag>
   </tags>
 
   <status type="string">alpha</status>
@@ -246,7 +245,12 @@ The Olympia has been preserved as one of the very few pre-Dreadnaughts existing 
    <name type="string">Flooded</name>
    <weight-lb alias="/fdm/jsbsim/inertia/pointmass-weight-lbs[6]"/>
    <min-lb type="double">0.0</min-lb>
-   <max-lb type="double">50000.0</max-lb>
+   <max-lb type="double">5000000.0</max-lb>
+   <location unit="M">
+    <x> 100 </x>
+    <y> 10 </y>
+    <z> 0 </z>
+   </location>
   </weight>
 
  </payload>
@@ -281,8 +285,8 @@ The Olympia has been preserved as one of the very few pre-Dreadnaughts existing 
     <file>Aircraft/USS_Olympia/Nasal/statistics.nas</file>
   </statistics -->
 
-  <OSD>
-    <!-- script>
+  <!-- OSD>
+    <script>
 ###############################################################################
 # On-screen displays
 var left  = screen.display.new(20, 10);
@@ -314,7 +318,9 @@ left.add("/fdm/jsbsim/hydro/roll-moment-lbsft");
 right.add("/fdm/jsbsim/hydro/v-kt");
 right.add("/fdm/jsbsim/hydro/vbx-fps");
 right.add("/fdm/jsbsim/hydro/vby-fps");
+
 right.add("/fdm/jsbsim/propulsion/boiler/steam-absolute-pressure-psi");
+
 right.add("/fdm/jsbsim/propulsion/engine[0]/steam-mean-pressure-psi");
 right.add("/fdm/jsbsim/propulsion/engine[0]/power-available-hp");
 right.add("/fdm/jsbsim/propulsion/engine[0]/power-required-hp");
@@ -322,6 +328,7 @@ right.add("/fdm/jsbsim/propulsion/engine[0]/engine-rpm");
 right.add("/fdm/jsbsim/propulsion/engine[0]/advance-ratio");
 right.add("/fdm/jsbsim/propulsion/engine[0]/thrust-lbs");
 right.add("/fdm/jsbsim/propulsion/engine[0]/shaft-position-norm");
+
 right.add("/fdm/jsbsim/propulsion/engine[1]/steam-mean-pressure-psi");
 right.add("/fdm/jsbsim/propulsion/engine[1]/power-available-hp");
 right.add("/fdm/jsbsim/propulsion/engine[1]/power-required-hp");
@@ -332,8 +339,8 @@ right.add("/fdm/jsbsim/propulsion/engine[1]/shaft-position-norm");
 #right.add("/fdm/jsbsim/");
 
 ###############################################################################
-    </script -->
-  </OSD>
+    </script>
+  </OSD -->
  </nasal>
 
 
@@ -343,8 +350,32 @@ right.add("/fdm/jsbsim/propulsion/engine[1]/shaft-position-norm");
  <input>
   <keyboard>
 
-   <key n="104">
-      <name>h</name>
+    <key n="98">
+      <name>b</name>
+      <desc>Drop anchor</desc>
+      <binding>
+        <command>nasal</command>
+        <script>
+          aground.drop_anchor();
+        </script>
+      </binding>
+   </key>
+
+    <key n="66">
+      <name>B</name>
+      <desc>Weigh anchor</desc>
+      <binding>
+        <command>nasal</command>
+        <script>
+          aground.weigh_anchor();
+        </script>
+      </binding>
+   </key>
+
+
+
+  <key n="80">
+      <name>P</name>
       <desc>Toggle Panel</desc>
       <binding>
         <command>nasal</command>
@@ -357,6 +388,7 @@ right.add("/fdm/jsbsim/propulsion/engine[1]/shaft-position-norm");
         </script>
       </binding>
    </key>
+
 
     <key n="127">
       <name>Delete</name>
@@ -526,57 +558,13 @@ right.add("/fdm/jsbsim/propulsion/engine[1]/shaft-position-norm");
       </binding>
    </key>
 
-  <key n="106"> <!-- Raise Binoculars -->
-      <name>j</name>
-      <desc>Raise Binoculars</desc>
-      <repeatable type="bool">true</repeatable>
-       <binding>
-        <command>nasal</command>
-        <script>
-          turrets.rotate_turret("sim/model/binocular_pitch", 1, -10, 40);
-        </script>
-      </binding>
-   </key>
-  <key n="74"> <!-- Lower Binoculars -->
-      <name>J</name>
-      <desc>Lower Binoculars</desc>
-      <repeatable type="bool">true</repeatable>
-       <binding>
-        <command>nasal</command>
-        <script>
-          turrets.rotate_turret("sim/model/binocular_pitch", -1, -0, 40);
-        </script>
-      </binding>
-   </key>
-
-  <key n="107"> <!-- Raise Binoculars -->
-      <name>k</name>
-      <desc>Look Right</desc>
-      <repeatable type="bool">true</repeatable>
-       <binding>
-        <command>nasal</command>
-        <script>
-          turrets.rotate_turret("sim/model/torso_yaw", 1, -45, 45);
-        </script>
-      </binding>
-   </key>
-  <key n="75"> <!-- Lower Binoculars -->
-      <name>K</name>
-      <desc>Look Left</desc>
-      <repeatable type="bool">true</repeatable>
-       <binding>
-        <command>nasal</command>
-        <script>
-          turrets.rotate_turret("sim/model/torso_yaw", -1, -45, 45);
-        </script>
-      </binding>
-   </key>
-
-
-
-
   </keyboard>
  </input>
+
+  <position>
+    <grounded type="bool">false</grounded>
+    <anchored type="bool">false</anchored>
+  </position>
 
  <fdm>
   <jsbsim>
