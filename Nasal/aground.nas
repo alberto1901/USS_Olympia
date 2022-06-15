@@ -77,6 +77,9 @@ var weigh_anchor = func() {
 
       gui.popupTip("Raising Anchor");
       interpolate("/fdm/jsbsim/hydro/drag-tweak-factor", 1, 10);
+      interpolate("/fdm/jsbsim/hydro/yaw-tweak-factor", 1, 10);
+      setprop("/fdm/jsbsim/hydro/pitch-tweak-factor", 1);
+      setprop("/fdm/jsbsim/hydro/roll-tweak-factor", 1);
       setprop("/position/anchored", "false");
 
 }
@@ -85,5 +88,8 @@ var drop_anchor = func() {
 
       gui.popupTip("Dropping Anchor");
       interpolate("/fdm/jsbsim/hydro/drag-tweak-factor", 1000, 10);
+      interpolate("/fdm/jsbsim/hydro/yaw-tweak-factor", 10000, 10);
+      setprop("/fdm/jsbsim/hydro/pitch-tweak-factor", 0.0001);
+      setprop("/fdm/jsbsim/hydro/roll-tweak-factor", 0.0001);
       setprop("/position/anchored", "true");
 }

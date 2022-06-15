@@ -9,16 +9,16 @@
     it under the terms of the GNU General Public License as published by
     the Free Software Foundation; either version 2 of the License, or
     (at your option) any later version.
-  
+
     This program is distributed in the hope that it will be useful,
     but WITHOUT ANY WARRANTY; without even the implied warranty of
     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
     GNU General Public License for more details.
-  
+
     You should have received a copy of the GNU General Public License
     along with this program; if not, write to the Free Software
     Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
-  
+
 -->
 <system name="U.S.S. Olympia hydrodynamics">
 
@@ -72,6 +72,7 @@
  <property value="1.0">hydro/drag-tweak-factor</property>
  <property value="1.0">hydro/lift-tweak-factor</property>
  <property value="1.0">hydro/pitch-tweak-factor</property>
+ <property value="1.0">hydro/roll-tweak-factor</property>
  <property value="1.0">hydro/yaw-tweak-factor</property>
 
  <!-- The side channel of the "wind" frame is not used. -->
@@ -110,7 +111,8 @@
     <sum>
      <property>hydro/pitch-deg</property>
      <product>
-      <value>1.0</value>
+      <property>hydro/pitch-tweak-factor</property>
+      <!-- value>1.0</value -->
       <max>
        <value>-30.0</value>
        <min>
@@ -131,7 +133,8 @@
     <sum>
      <property>hydro/roll-deg</property>
      <product>
-      <value>1.0</value>
+      <property>hydro/roll-tweak-factor</property>
+      <!-- value>1.0</value -->
       <max>
        <value>-50.0</value>
        <min>
@@ -270,7 +273,7 @@
         0   0.0      0.0      0.0      0.0      0.0
         2   0.0      0.0      0.0      0.0      0.0
         4   0.0      0.0      0.0      0.0      0.0
-      </tableData>      
+      </tableData>
      </table>
     </product>
    </function>
