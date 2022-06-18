@@ -318,7 +318,7 @@ var update = func(){
     }
 
     #update ground indicator
-    if(getprop("/position/grounded")){
+    if(getprop("/position/aground")){
         ground.set("fill", "rgba(255,255,255,1.0)");
     }
     else {

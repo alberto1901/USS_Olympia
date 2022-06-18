@@ -32,7 +32,7 @@ var run_aground = func{
     #Yes, we have a grounded vessel!
     if(warning != ""){
         gui.popupTip("Oh No! I'm aground on the "~warning~"!");
-        setprop("/position/grounded", "true");
+        setprop("/position/aground", "true");
 
         setprop("/fdm/jsbsim/forces/hold-down", "true");
         interpolate("/orientation/roll-deg", 10, 3);
@@ -64,7 +64,7 @@ var refloat = func() {
     gui.popupTip("Refloating");
 
     setprop("/fdm/jsbsim/forces/hold-down", "false");
-    setprop("/position/grounded", "false");
+    setprop("/position/aground", "false");
 
     #start checking for grounding again but give a 10 second delay to allow backing off the ground
     timer_run_aground.restart(10.0);

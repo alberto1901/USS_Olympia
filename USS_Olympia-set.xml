@@ -155,10 +155,10 @@ The Olympia has been preserved as one of the very few pre-Dreadnaughts existing 
 
   <chase-distance-m type="double">-150.0</chase-distance-m>
 
-  <!-- sound>
+  <sound>
    <audible>true</audible>
-   <path>Aircraft/Submarine_Scout/Sounds/Submarine_Scout-sound.xml</path>
-  </sound -->
+   <path>Aircraft/USS_Olympia/Sounds/sounds.xml</path>
+  </sound>
 
   <!-- Aircraft specific help. -->
   <!-- help include="help.xml"/ -->
@@ -562,7 +562,7 @@ right.add("/fdm/jsbsim/propulsion/engine[1]/shaft-position-norm");
  </input>
 
   <position>
-    <grounded type="bool">false</grounded>
+    <aground type="bool">false</aground>
     <anchored type="bool">false</anchored>
   </position>
 
