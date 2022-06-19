@@ -14,9 +14,9 @@
     </greater-than>
    </condition>
    <position>
-    <x>0.0</x>
-    <y>0.0</y>
-    <z>0.0</z>
+    <x>0.01</x>
+    <y>0.01</y>
+    <z>0.01</z>
    </position>
    <!-- reference-dist>5.0</reference-dist>
    <max-dist>75.0</max-dist -->
@@ -35,27 +35,41 @@
    <condition>
     <or>
     <greater-than>
-      <property>/fdm/jsbsim/propulsion/engine[0]/engine-rpm</property>
-      <value>3</value>
+    <property>/fdm/jsbsim/propulsion/engine[0]/steam-mean-pressure-psi</property>
+      <value>5</value>
     </greater-than>
     <greater-than>
-      <property>/fdm/jsbsim/propulsion/engine[1]/engine-rpm</property>
-      <value>3</value>
+    <property>/fdm/jsbsim/propulsion/engine[1]/steam-mean-pressure-psi</property>
+      <value>5</value>
     </greater-than>
     </or>
    </condition>
    <position>
     <x>69.0</x>
-    <y>0.0</y>
-    <z>2.0</z>
+    <y>0.01</y>
+    <z>0.01</z>
    </position>
    <volume>
     <property>/fdm/jsbsim/hydro/v-kt</property>
     <factor>0.5</factor>
-    <offset>0.1</offset>
+    <offset>0.5</offset>
     <min>0.1</min>
-    <max>5.0</max>
+    <max>10.0</max>
    </volume>
+   <pitch>
+    <property>/fdm/jsbsim/propulsion/engine[0]/steam-mean-pressure-psi</property>
+    <factor>0.01</factor>
+    <offset>1.0</offset>
+    <min>0.0</min>
+    <max>3.0</max>
+   </pitch>
+   <pitch>
+    <property>/fdm/jsbsim/propulsion/engine[1]/steam-mean-pressure-psi</property>
+    <factor>0.01</factor>
+    <offset>0.0</offset>
+    <min>1.0</min>
+    <max>3.0</max>
+   </pitch>
   </engine>
 
  <stbd-engine-astern>
@@ -68,9 +82,9 @@
     </less-than>
    </condition>
    <position>
-    <x>0.0</x>
-    <y>0.0</y>
-    <z>2.0</z>
+    <x>0.01</x>
+    <y>0.01</y>
+    <z>0.01</z>
    </position>
    <volume>
     <property>/fdm/jsbsim/external_reactions/propeller[0]/x</property>
@@ -91,9 +105,9 @@
       </greater-than>
    </condition>
    <position>
-    <x>0.0</x>
-    <y>0.0</y>
-    <z>2.0</z>
+    <x>0.01</x>
+    <y>0.01</y>
+    <z>0.01</z>
    </position>
    <volume>
     <property>/fdm/jsbsim/external_reactions/propeller[0]/x</property>
@@ -115,9 +129,9 @@
     </less-than>
    </condition>
    <position>
-    <x>0.0</x>
-    <y>0.0</y>
-    <z>2.0</z>
+    <x>0.01</x>
+    <y>0.01</y>
+    <z>0.01</z>
    </position>
    <volume>
     <property>/fdm/jsbsim/external_reactions/propeller[1]/x</property>
@@ -138,9 +152,9 @@
       </greater-than>
    </condition>
    <position>
-    <x>0.0</x>
-    <y>0.0</y>
-    <z>2.0</z>
+    <x>0.01</x>
+    <y>0.01</y>
+    <z>0.01</z>
    </position>
    <volume>
     <property>/fdm/jsbsim/external_reactions/propeller[1]/x</property>
@@ -159,9 +173,9 @@
      <property>/position/aground</property>
    </condition>
    <position>
-    <x>0.0</x>
-    <y>0.0</y>
-    <z>0.0</z>
+    <x>0.01</x>
+    <y>0.01</y>
+    <z>0.01</z>
    </position>
    <volume>
     <property>/position/aground</property>
@@ -181,9 +195,9 @@
     </not>
    </condition>
    <position>
-    <x>0.0</x>
-    <y>0.0</y>
-    <z>0.0</z>
+    <x>0.01</x>
+    <y>0.01</y>
+    <z>0.01</z>
    </position>
    <volume>
     <property>/position/aground</property>
@@ -202,13 +216,13 @@
      <property>/position/anchored</property>
    </condition>
    <position>
-    <x>0.0</x>
-    <y>0.0</y>
-    <z>2.0</z>
+    <x>0.01</x>
+    <y>0.01</y>
+    <z>0.01</z>
    </position>
    <volume>
     <property>/position/anchored</property>
-    <factor>0.05</factor>
+    <factor>1.0</factor>
     <offset>1.0</offset>
     <min>1</min>
     <max>2.0</max>
@@ -224,9 +238,9 @@
     </not>
    </condition>
    <position>
-    <x>0.0</x>
-    <y>0.0</y>
-    <z>2.0</z>
+    <x>0.01</x>
+    <y>0.01</y>
+    <z>0.01</z>
    </position>
    <volume>
     <property>/position/anchored</property>
@@ -236,6 +250,28 @@
     <max>5.0</max>
    </volume>
   </raise-anchor>
+
+  <seagull>
+    <name>seagull-sound</name>
+    <path>Aircraft/USS_Olympia/Sounds/seagull.wav</path>
+   <condition>
+    <or>
+    <greater-than>
+     <property>/sim/model/torso_yaw</property>
+      <value>10</value>
+    </greater-than>
+    <less-than>
+     <property>/sim/model/torso_yaw</property>
+      <value>-20</value>
+    </less-than>
+    </or>
+   </condition>
+   <position>
+    <x>0.01</x>
+    <y>0.01</y>
+    <z>0.01</z>
+   </position>
+  </seagull>
 
  </fx>
 
