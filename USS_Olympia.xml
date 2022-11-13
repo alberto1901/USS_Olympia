@@ -308,7 +308,6 @@
   <documentation>
    Will be modelled using external forces.
   </documentation>
-
  </propulsion>
 
  <external_reactions>

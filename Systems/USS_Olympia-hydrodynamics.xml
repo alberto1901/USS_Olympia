@@ -71,7 +71,7 @@
  <!-- Tweak factors. :) -->
  <property value="1.0">hydro/drag-tweak-factor</property>
  <property value="1.0">hydro/lift-tweak-factor</property>
- <property value="1.0">hydro/pitch-tweak-factor</property>
+ <property value="0.25">hydro/pitch-tweak-factor</property>
  <property value="1.0">hydro/roll-tweak-factor</property>
  <property value="1.0">hydro/yaw-tweak-factor</property>
 
@@ -112,7 +112,6 @@
      <property>hydro/pitch-deg</property>
      <product>
       <property>hydro/pitch-tweak-factor</property>
-      <!-- value>1.0</value -->
       <max>
        <value>-30.0</value>
        <min>

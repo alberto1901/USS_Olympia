@@ -563,7 +563,7 @@ right.add("/fdm/jsbsim/propulsion/engine[1]/shaft-position-norm");
 
   <position>
     <aground type="bool">false</aground>
-    <anchored type="bool">false</anchored>
+    <anchored type="bool">true</anchored>
   </position>
 
  <fdm>

@@ -7,7 +7,8 @@ var title = "Instruments";
 
     ## create a new window, dimensions are WIDTH x HEIGHT, using the dialog decoration (i.e. titlebar)
     var window = canvas.Window.new([258,1200], nil)
-       .set('title',title);
+       .set('title',title)
+       .clearFocus();
 
     #hide the panel window and set the showing flag to indicate it is not showing
     window.hide();
